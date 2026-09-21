@@ -466,7 +466,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
             <sc-for list="{{ landmarks }}" as="l" hint-placeholder-count="6">
               <div style="background:var(--eden-ivory);border:1px solid rgba(52,68,49,.1);border-radius:3px;overflow:hidden;">
-                <div style="position:relative;aspect-ratio:16/10;background:var(--eden-ivory);">
+                <div style="position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--eden-ivory);">
                   <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ l.slotId }}" alt="{{ l.altText }}" src="{{ l.src }}" shape="rect" fit="cover" placeholder="Photo" hint-size="100%,100%" style="width:100%;height:100%;"></x-import>
                 </div>
                 <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:18px 22px 20px;">
@@ -582,7 +582,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
             <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;">
               <sc-for list="{{ filteredPlans }}" as="p" hint-placeholder-count="6">
                 <div style="{{ p.cardStyle }}">
-                  <div onClick="{{ p.open }}" title="View details" style="position:relative;aspect-ratio:614/719;background:var(--eden-ivory-2);border-bottom:1px solid rgba(52,68,49,.08);cursor:pointer;">
+                  <div onClick="{{ p.open }}" title="View details" style="position:relative;aspect-ratio:614/719;overflow:hidden;background:var(--eden-ivory-2);border-bottom:1px solid rgba(52,68,49,.08);cursor:pointer;">
                     <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ p.slotId }}" alt="{{ p.altText }}" src="{{ p.src }}" shape="rect" fit="contain" placeholder="Plan drawing" hint-size="100%,100%" style="width:100%;height:100%;"></x-import>
                     <sc-if value="{{ p.showSoldBadge }}" hint-placeholder-val="{{ false }}">
                       <span style="position:absolute;top:14px;left:14px;background:var(--eden-terracotta);color:#fff;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:7px 12px;border-radius:2px;">{{ p.soldBadge }}</span>
@@ -869,7 +869,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
         <div ref="{{ setProjRef }}" style="display:flex;gap:clamp(18px,2.4vw,30px);overflow-x:auto;scroll-snap-type:x mandatory;padding:8px clamp(20px,5vw,80px) 24px;scrollbar-width:none;align-items:flex-start;">
           <sc-for list="{{ projects }}" as="pr" hint-placeholder-count="6">
             <a href="{{ pr.url }}" target="_blank" rel="noopener" style="flex:0 0 auto;width:clamp(260px,32vw,360px);scroll-snap-align:center;background:#fff;border:1px solid rgba(52,68,49,.1);border-radius:3px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.06);display:block;text-decoration:none;color:inherit;transition:box-shadow .3s ease,border-color .3s ease,transform .3s cubic-bezier(.22,.61,.36,1);" style-hover="box-shadow:0 14px 32px rgba(28,38,26,.14);border-color:rgba(52,68,49,.24);transform:translateY(-4px);">
-              <div style="position:relative;aspect-ratio:3/2;background:var(--eden-moss);">
+              <div style="position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--eden-moss);">
                 <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ pr.slotId }}" alt="{{ pr.altText }}" src="{{ pr.src }}" shape="rect" fit="cover" placeholder="Project photo" hint-size="100%,100%" style="width:100%;height:100%;"></x-import>
               </div>
               <div style="padding:20px 22px;display:flex;align-items:baseline;justify-content:space-between;gap:14px;">
@@ -1125,7 +1125,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
           <div style="display:grid;grid-template-columns:{{ cmpCols }};gap:22px;align-items:start;">
             <sc-for list="{{ cmpPlans }}" as="c" hint-placeholder-count="2">
               <div style="background:var(--eden-ivory);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;">
-                <div style="position:relative;aspect-ratio:614/719;background:#fff;">
+                <div style="position:relative;aspect-ratio:614/719;overflow:hidden;background:#fff;">
                   <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ c.slotId }}" src="{{ c.src }}" alt="{{ c.altText }}" shape="rect" fit="contain" placeholder="Plan drawing" hint-size="100%,100%" style="width:100%;height:100%;"></x-import>
                 </div>
                 <div style="padding:20px 22px 22px;display:flex;flex-direction:column;gap:14px;">
