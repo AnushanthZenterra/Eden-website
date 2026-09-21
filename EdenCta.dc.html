@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+:root{--eden-moss:#344431;--eden-sand:#e4d4b4;--font-serif:"Newsreader",Georgia,serif;--font-sans:"Hanken Grotesk",system-ui,sans-serif;--maxw:1240px;}
+</style>
+</helmet>
+<section style="background:var(--eden-sand);padding:clamp(48px,7vw,88px) 28px;text-align:center;">
+  <div style="max-width:720px;margin:0 auto;">
+    <h2 style="font-family:var(--font-serif);font-weight:300;font-size:clamp(26px,3.8vw,42px);margin:0 0 22px;color:var(--eden-moss);line-height:1.15;">Ready to grow with us?</h2>
+    <a href="#" onClick="{{ go }}" style="display:inline-block;background:var(--eden-moss);color:#f4ede1;padding:16px 34px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;">Register for more information</a>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:300},&quot;go&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(e:any)=&gt;void&quot;}}"></script>
+</body>
+</html>

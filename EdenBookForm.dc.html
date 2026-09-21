@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+:root{--eden-moss:#344431;--eden-terracotta:#d07a4c;--eden-ivory:#faf6ef;--eden-ivory-2:#f3ede2;--eden-sage:#6f7a63;--font-serif:"Newsreader",Georgia,serif;--font-sans:"Hanken Grotesk",system-ui,sans-serif;}
+</style>
+</helmet>
+<div style="font-family:var(--font-sans);color:var(--eden-moss);">
+  <sc-if value="{{ f.submitted }}" hint-placeholder-val="{{ false }}">
+    <div style="text-align:center;padding:14px 0 6px;">
+      <div style="width:56px;height:56px;margin:0 auto 18px;border-radius:50%;background:var(--eden-moss);color:#e4d4b4;display:flex;align-items:center;justify-content:center;font-size:26px;">✓</div>
+      <h3 style="font-family:var(--font-serif);font-weight:400;font-size:26px;margin:0 0 10px;color:var(--eden-moss);">Thank you, {{ f.submittedName }}.</h3>
+      <p style="color:#5c5647;font-size:15px;line-height:1.6;font-weight:300;max-width:340px;margin:0 auto;">Our sales team will call to confirm your appointment at the showhome.</p>
+    </div>
+  </sc-if>
+  <sc-if value="{{ f.notSubmitted }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <p style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--eden-terracotta);font-weight:700;margin:0 0 10px;">Now selling</p>
+      <h3 style="font-family:var(--font-serif);font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.15;margin:0 0 10px;color:var(--eden-moss);">{{ title }}</h3>
+      <p style="font-size:15px;line-height:1.6;color:#5c5647;font-weight:300;margin:0 0 22px;max-width:460px;">{{ sub }}</p>
+      <form onSubmit="{{ f.submit }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;">
+          <label style="display:block;">
+            <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:#7c7563;">First name *</span>
+            <input required="{{ true }}" autoComplete="given-name" value="{{ f.first }}" onInput="{{ f.setFirst }}" placeholder="First name" style="width:100%;margin-top:6px;padding:13px 14px;border:1px solid rgba(52,68,49,.25);border-radius:2px;background:#fff;font-family:var(--font-sans);font-size:16px;color:var(--eden-moss);box-sizing:border-box;">
+          </label>
+          <label style="display:block;">
+            <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:#7c7563;">Last name *</span>
+            <input required="{{ true }}" autoComplete="family-name" value="{{ f.last }}" onInput="{{ f.setLast }}" placeholder="Last name" style="width:100%;margin-top:6px;padding:13px 14px;border:1px solid rgba(52,68,49,.25);border-radius:2px;background:#fff;font-family:var(--font-sans);font-size:16px;color:var(--eden-moss);box-sizing:border-box;">
+          </label>
+          <label style="display:block;">
+            <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:#7c7563;">Email *</span>
+            <input required="{{ true }}" type="email" autoComplete="email" value="{{ f.email }}" onInput="{{ f.setEmail }}" placeholder="you@email.com" style="width:100%;margin-top:6px;padding:13px 14px;border:1px solid rgba(52,68,49,.25);border-radius:2px;background:#fff;font-family:var(--font-sans);font-size:16px;color:var(--eden-moss);box-sizing:border-box;">
+          </label>
+          <label style="display:block;">
+            <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:#7c7563;">Phone *</span>
+            <input required="{{ true }}" type="tel" autoComplete="tel" value="{{ f.phone }}" onInput="{{ f.setPhone }}" placeholder="(604) 000-0000" style="width:100%;margin-top:6px;padding:13px 14px;border:1px solid rgba(52,68,49,.25);border-radius:2px;background:#fff;font-family:var(--font-sans);font-size:16px;color:var(--eden-moss);box-sizing:border-box;">
+          </label>
+          <label style="display:block;grid-column:1 / -1;">
+            <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:#7c7563;">Bedrooms of interest</span>
+            <select value="{{ f.beds }}" onChange="{{ f.setBeds }}" style="width:100%;margin-top:6px;padding:13px 14px;border:1px solid rgba(52,68,49,.25);border-radius:2px;background:#fff;font-family:var(--font-sans);font-size:16px;color:var(--eden-moss);box-sizing:border-box;">
+              <option value="">No preference</option>
+              <option value="1">1 bedroom</option>
+              <option value="2">2 bedroom</option>
+              <option value="3">3 bedroom</option>
+            </select>
+          </label>
+        </div>
+        <button type="submit" style="width:100%;margin-top:20px;background:var(--eden-terracotta);color:#fff;padding:17px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border:none;border-radius:2px;cursor:pointer;font-family:var(--font-sans);">Book an appointment</button>
+        <p style="margin:14px 0 0;font-size:11.5px;line-height:1.55;color:#8a8371;">Showhome open 12 – 5 PM daily, closed Fridays. By submitting, you consent to Zenterra contacting you about Eden. This is not an offering for sale; E.&amp;O.E.</p>
+      </form>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:560,&quot;height&quot;:520},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Book a private appointment&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;sub&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;See pricing, floorplans and availability with our sales team at the Willoughby Town Centre showhome.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;f&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;any&quot;}}"></script>
+</body>
+</html>
