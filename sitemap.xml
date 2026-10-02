@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Eden currently serves every section from one URL using hash routes
-  (/#floorplans, /#amenities...). Fragments are not separate documents to a
-  crawler, so listing them here would be noise. When path-based routing ships
-  (P1 ticket 2), add /floorplans, /amenities, /homes, /location, /developer,
-  /faq and /register as their own <url> entries.
--->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.edenbyzenterra.ca/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.edenbyzenterra.ca/blog</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.edenbyzenterra.ca/blog/construction-has-started-at-eden</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

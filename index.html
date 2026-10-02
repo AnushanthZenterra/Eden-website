@@ -37,6 +37,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
 <meta property="og:title" content="Eden by Zenterra | Presale Condos in Willoughby, Langley BC">
 <meta property="og:description" content="New 1, 2 &amp; 3 bedroom presale condominiums in Willoughby, Langley. Completion Summer–Fall 2028. Now selling - book your appointment today.">
 <meta property="og:type" content="website">
+<link rel="alternate" type="application/rss+xml" title="Eden by Zenterra Blog" href="https://www.edenbyzenterra.ca/blog/feed.xml">
 <link rel="canonical" href="https://www.edenbyzenterra.ca/">
 <meta property="og:url" content="https://www.edenbyzenterra.ca/">
 <meta property="og:site_name" content="Eden by Zenterra">
@@ -91,6 +92,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
       Open 12 &ndash; 5 PM daily, closed Fridays.
       <a href="tel:+17787621902">778.762.1902</a>
       <a href="mailto:eden@zenterra.ca">eden@zenterra.ca</a>
+      <a href="/blog">Eden blog: news &amp; updates</a>
     </address>
   </div>
 <x-dc>
@@ -114,7 +116,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
           <a href="#" onClick="{{ item.go }}" style="{{ item.style }}" style-hover="color:#fff;background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.34);-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -6px 12px -8px rgba(255,255,255,.35),0 8px 20px -6px rgba(20,28,18,.45);transform:translateY(-1px);">{{ item.label }}</a>
         </sc-for>
       </nav>
-      <a href="#" onClick="{{ goBook }}" style="{{ navCtaStyle }}" style-hover="background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.04)),var(--eden-terracotta);border-color:rgba(255,255,255,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 10px 24px -8px rgba(20,28,18,.55);transform:translateY(-1px);" data-nav="cta">Book appointment</a>
+      <a href="#" onClick="{{ goHeaderCta }}" style="{{ navCtaStyle }}" style-hover="background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.04)),var(--eden-terracotta);border-color:rgba(255,255,255,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 10px 24px -8px rgba(20,28,18,.55);transform:translateY(-1px);" data-nav="cta">Book appointment</a>
       <button onClick="{{ toggleMenu }}" aria-label="Menu" style="{{ hamburgerStyle }}">
         <span style="display:block;width:22px;height:2px;background:currentColor;margin:4px 0;"></span>
         <span style="display:block;width:22px;height:2px;background:currentColor;margin:4px 0;"></span>
@@ -150,8 +152,9 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
             <p style="margin:0 0 18px;"><span style="display:inline-block;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--eden-sand);font-weight:600;border:1px solid rgba(244,237,225,.55);border-radius:999px;padding:9px 20px;background:rgba(30,40,28,.28);backdrop-filter:blur(3px);white-space:nowrap;">Willoughby · Langley, BC</span></p>
             <p style="font-family:var(--font-serif);font-weight:300;color:#fff;font-size:clamp(48px,9vw,116px);line-height:.98;margin:0;letter-spacing:-.02em;text-shadow:0 2px 18px rgba(0,0,0,.4);">A space<br>to grow.</p>
             <h1 style="font-family:var(--font-sans);color:#fff;font-size:clamp(17px,2.3vw,22px);font-weight:500;line-height:1.35;max-width:620px;margin:24px 0 0;letter-spacing:.005em;text-shadow:0 1px 8px rgba(0,0,0,.45);">Eden: presale 1, 2 &amp; 3 bedroom condominiums in Willoughby, Langley, BC</h1>
+            <sc-if value="{{ hasStartPrice }}" hint-placeholder-val="{{ false }}"><p style="margin:12px 0 0;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:700;text-shadow:0 1px 8px rgba(0,0,0,.5);">Presale from {{ startingPrice }}</p></sc-if>
             <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;pointer-events:auto;">
-              <a href="#" onClick="{{ goBook }}" style="background:var(--eden-terracotta);color:#fff;padding:16px 30px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;">Book an appointment</a>
+              <a href="#" onClick="{{ goPricingHero }}" style="background:var(--eden-terracotta);color:#fff;padding:16px 30px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;">Get Pricing &amp; Floorplans</a>
               <a href="#" onClick="{{ goFloorplans }}" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.55);color:#fff;padding:16px 30px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;backdrop-filter:blur(2px);">View floorplans</a>
             </div>
             <div style="display:{{ heroMetaDisplay }};margin-top:30px;align-items:center;gap:clamp(10px,2.4vw,14px);font-size:clamp(10px,2.7vw,12px);letter-spacing:.16em;text-transform:uppercase;color:var(--eden-sand);font-weight:600;border:1px solid rgba(244,237,225,.4);border-radius:999px;padding:clamp(7px,1.8vw,9px) clamp(13px,3.4vw,20px);background:rgba(30,40,28,.24);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);white-space:nowrap;">
@@ -179,11 +182,11 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
         <div style="max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:clamp(14px,2.4vw,32px);flex-wrap:wrap;">
           <div style="min-width:0;flex:1 1 300px;">
             <p style="margin:0 0 6px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--eden-wheat);font-weight:700;">Presale now selling · Willoughby, Langley</p>
-            <p style="margin:0;font-family:var(--font-serif);font-size:clamp(19px,2.6vw,26px);line-height:1.2;color:#fff;font-weight:300;">1, 2 &amp; 3 bedroom condominiums. <br>Book a private appointment for pricing.</p>
+            <p style="margin:0;font-family:var(--font-serif);font-size:clamp(19px,2.6vw,26px);line-height:1.2;color:#fff;font-weight:300;">1, 2 &amp; 3 bedroom condominiums. <br>Get the price list &amp; floorplan package.</p>
           </div>
           <form onSubmit="{{ quickAsk }}" style="display:flex;gap:10px;flex:1 1 320px;max-width:520px;flex-wrap:wrap;">
-            <input type="email" autoComplete="email" value="{{ formEmail }}" onInput="{{ setEmail }}" placeholder="Your email" aria-label="Your email" style="flex:1 1 180px;min-width:0;padding:15px 14px;border:1px solid rgba(244,237,225,.32);border-radius:2px;background:rgba(255,255,255,.06);font-family:var(--font-sans);font-size:16px;color:#fff;box-sizing:border-box;">
-            <button type="submit" style="flex:0 0 auto;background:var(--eden-terracotta);color:#fff;padding:15px 26px;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border:none;border-radius:2px;cursor:pointer;font-family:var(--font-sans);white-space:nowrap;">Book an appointment</button>
+            <input type="email" name="email" inputMode="email" autoComplete="email" autoCapitalize="off" value="{{ formEmail }}" onInput="{{ setEmail }}" placeholder="Your email" aria-label="Your email" style="flex:1 1 180px;min-width:0;min-height:50px;padding:15px 14px;border:1px solid rgba(244,237,225,.32);border-radius:2px;background:rgba(255,255,255,.06);font-family:var(--font-sans);font-size:16px;color:#fff;box-sizing:border-box;">
+            <button type="submit" style="flex:0 0 auto;min-height:50px;background:var(--eden-terracotta);color:#fff;padding:15px 26px;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border:none;border-radius:2px;cursor:pointer;font-family:var(--font-sans);white-space:nowrap;">Get Pricing</button>
           </form>
         </div>
       </section>
@@ -599,6 +602,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
                       <a href="{{ p.pdf }}" onClick="{{ p.download }}" download="{{ p.pdfName }}" style="display:inline-flex;align-items:center;min-height:40px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;color:var(--eden-terracotta);">↓ Plan</a>
                       <a href="#" onClick="{{ p.cmpToggle }}" style="{{ p.cmpStyle }}">{{ p.cmpLabel }}</a>
                     </div>
+                    <a href="#" onClick="{{ p.getPricing }}" style="display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:14px;background:var(--eden-terracotta);color:#fff;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;text-decoration:none;" style-hover="background:#b9683d;">Get pricing for this plan</a>
                     <sc-if value="{{ adminAuthed }}" hint-placeholder-val="{{ false }}">
                       <a href="#" onClick="{{ p.toggleSold }}" style="{{ p.soldBtnStyle }}">{{ p.soldBtnLabel }}</a>
                     </sc-if>
@@ -609,9 +613,9 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
           </div>
         </section>
       </sc-if>
-      <section style="background:var(--eden-sand);padding:clamp(44px,6vw,80px) 28px;">
+      <section data-eden-form="1" style="background:var(--eden-sand);padding:clamp(44px,6vw,80px) 28px;">
         <div style="max-width:760px;margin:0 auto;background:#fff;border:1px solid rgba(52,68,49,.12);border-radius:3px;padding:clamp(24px,4vw,40px);box-shadow:0 1px 2px rgba(0,0,0,.06);">
-          <dc-import name="EdenBookForm" title="Want pricing for your preferred plan?" sub="Book a private appointment and our sales team will walk you through availability, pricing and deposit structure for the plans you like." f="{{ bookForm }}" hint-size="100%,520px"></dc-import>
+          <dc-import name="EdenBookForm" eyebrow="Price list &amp; floorplans" title="Get the Price List &amp; Floorplan Package" sub="Current pricing for every Eden plan, plus the full floorplan package, sent to your inbox." cta="Get Pricing &amp; Floorplans" f="{{ fpForm }}" hint-size="100%,600px"></dc-import>
         </div>
       </section>
     </sc-if>
@@ -678,9 +682,9 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
           </div>
           </div>
         </section>
-      <section style="background:var(--eden-sand);padding:clamp(44px,6vw,80px) 28px;">
+      <section data-eden-form="1" style="background:var(--eden-sand);padding:clamp(44px,6vw,80px) 28px;">
         <div style="max-width:760px;margin:0 auto;background:#fff;border:1px solid rgba(52,68,49,.12);border-radius:3px;padding:clamp(24px,4vw,40px);box-shadow:0 1px 2px rgba(0,0,0,.06);">
-          <dc-import name="EdenBookForm" title="See the amenities in person." sub="Book a private appointment at the Willoughby Town Centre showhome and tour the shared spaces with our sales team." f="{{ bookForm }}" hint-size="100%,520px"></dc-import>
+          <dc-import name="EdenBookForm" eyebrow="Price list &amp; floorplans" title="Get the Price List &amp; Floorplan Package" sub="See what each home costs alongside the shared spaces you just explored. Pricing and floorplans, sent to your inbox." cta="Get Pricing &amp; Floorplans" f="{{ amenForm }}" hint-size="100%,600px"></dc-import>
         </div>
       </section>
       </sc-if></div>
@@ -827,7 +831,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
             </div>
           </div>
 
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:clamp(34px,4.5vw,48px);">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px;margin-top:clamp(34px,4.5vw,48px);">
             <div style="background:#fff;border:1px solid rgba(52,68,49,.12);border-radius:3px;padding:26px 28px;display:flex;align-items:center;gap:22px;transition:border-color .3s ease,box-shadow .3s ease,transform .3s cubic-bezier(.22,.9,.28,1);" style-hover="border-color:rgba(52,68,49,.3);box-shadow:0 10px 26px -14px rgba(28,38,26,.35);transform:translateY(-4px);">
               <img src="https://res.cloudinary.com/jvsvq2qw/image/upload/f_auto,q_auto,w_400/v1787251914/GA-WINNER-H_2026_plosor.png" alt="Georgie Awards 2026 Winner - CHBA BC" style="height:74px;width:auto;flex:none;">
               <div>
@@ -840,6 +844,20 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
               <div>
                 <p style="margin:0;font-family:var(--font-serif);font-size:20px;font-weight:400;color:var(--eden-moss);">Awards for Housing Excellence</p>
                 <p style="margin:5px 0 0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#8a8371;font-weight:600;">HAVAN · 2026 Winner</p>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid rgba(52,68,49,.12);border-radius:3px;padding:26px 28px;display:flex;align-items:center;gap:22px;transition:border-color .3s ease,box-shadow .3s ease,transform .3s cubic-bezier(.22,.9,.28,1);" style-hover="border-color:rgba(52,68,49,.3);box-shadow:0 10px 26px -14px rgba(28,38,26,.35);transform:translateY(-4px);">
+              <img src="https://res.cloudinary.com/jvsvq2qw/image/upload/f_auto,q_auto,w_400/v1790965635/CHBA-Member_wsv8b0.png" alt="Canadian Home Builders' Association member" style="height:80px;width:auto;max-width:46%;object-fit:contain;flex:none;">
+              <div>
+                <p style="margin:0;font-family:var(--font-serif);font-size:20px;font-weight:400;color:var(--eden-moss);">Canadian Home Builders' Association</p>
+                <p style="margin:5px 0 0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#8a8371;font-weight:600;">CHBA · Member</p>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid rgba(52,68,49,.12);border-radius:3px;padding:26px 28px;display:flex;align-items:center;gap:22px;transition:border-color .3s ease,box-shadow .3s ease,transform .3s cubic-bezier(.22,.9,.28,1);" style-hover="border-color:rgba(52,68,49,.3);box-shadow:0 10px 26px -14px rgba(28,38,26,.35);transform:translateY(-4px);">
+              <img src="https://res.cloudinary.com/jvsvq2qw/image/upload/f_auto,q_auto,w_600/v1790965635/CHBA-BC-775_rbfr90.png" alt="Canadian Home Builders' Association of British Columbia" style="height:44px;width:auto;max-width:46%;object-fit:contain;flex:none;">
+              <div>
+                <p style="margin:0;font-family:var(--font-serif);font-size:20px;font-weight:400;color:var(--eden-moss);">CHBA British Columbia</p>
+                <p style="margin:5px 0 0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#8a8371;font-weight:600;">CHBA BC · Member</p>
               </div>
             </div>
           </div>
@@ -968,15 +986,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
             </div>
           </div>
 
-          <div style="{{ regFormStyle }}">
-            <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
-              <div style="text-align:center;padding:20px 0;animation:edenFade .5s ease both;">
-                <div style="width:64px;height:64px;margin:0 auto 22px;border-radius:50%;background:var(--eden-moss);color:var(--eden-wheat);display:flex;align-items:center;justify-content:center;font-size:30px;">✓</div>
-                <h3 style="font-family:var(--font-serif);font-weight:400;font-size:30px;margin:0 0 12px;color:var(--eden-moss);">Thank you, {{ submittedName }}.</h3>
-                <p style="color:#5c5647;font-size:16px;line-height:1.6;font-weight:300;max-width:340px;margin:0 auto 26px;">Thanks for reaching out. Our sales team will be in touch shortly to arrange your appointment.</p>
-                <a href="#" onClick="{{ resetForm }}" style="display:inline-block;border:1px solid var(--eden-moss);color:var(--eden-moss);padding:13px 26px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;">Send another enquiry</a>
-              </div>
-            </sc-if>
+          <div data-eden-form="1" style="{{ regFormStyle }}">
             <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
               <sc-if value="{{ cmpHasAny }}" hint-placeholder-val="{{ false }}">
                 <div style="margin-bottom:22px;padding:16px 18px;border:1px solid rgba(52,68,49,.16);border-radius:3px;background:var(--eden-ivory-2);">
@@ -991,45 +1001,8 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
                   </div>
                 </div>
               </sc-if>
-              <form onSubmit="{{ submitForm }}">
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-                  <label style="display:block;">
-                    <span style="{{ fieldLabelStyle }}">First name *</span>
-                    <input required="{{ true }}" value="{{ formFirst }}" onInput="{{ setFirst }}" placeholder="First name" style="{{ inputStyle }}">
-                  </label>
-                  <label style="display:block;">
-                    <span style="{{ fieldLabelStyle }}">Last name *</span>
-                    <input required="{{ true }}" value="{{ formLast }}" onInput="{{ setLast }}" placeholder="Last name" style="{{ inputStyle }}">
-                  </label>
-                  <label style="display:block;">
-                    <span style="{{ fieldLabelStyle }}">Email *</span>
-                    <input required="{{ true }}" type="email" value="{{ formEmail }}" onInput="{{ setEmail }}" placeholder="you@email.com" style="{{ inputStyle }}">
-                  </label>
-                  <label style="display:block;">
-                    <span style="{{ fieldLabelStyle }}">Phone *</span>
-                    <input required="{{ true }}" type="tel" value="{{ formPhone }}" onInput="{{ setPhone }}" placeholder="Phone number" style="{{ inputStyle }}">
-                  </label>
-                  <label style="display:block;grid-column:1 / -1;">
-                    <span style="{{ fieldLabelStyle }}">Bedrooms of interest</span>
-                    <select value="{{ formBeds }}" onChange="{{ setBeds }}" style="{{ inputStyle }}">
-                      <option value="">No preference</option>
-                      <option value="1">1 bedroom</option>
-                      <option value="2">2 bedroom</option>
-                      <option value="3">3 bedroom</option>
-                    </select>
-                  </label>
-                  <div style="grid-column:1 / -1;">
-                    <span style="{{ fieldLabelStyle }}">Are you a realtor?</span>
-                    <div style="display:flex;gap:10px;margin-top:6px;">
-                      <a href="#" onClick="{{ setRealtorNo }}" style="{{ realtorNoStyle }}">No</a>
-                      <a href="#" onClick="{{ setRealtorYes }}" style="{{ realtorYesStyle }}">Yes</a>
-                    </div>
-                  </div>
-                </div>
-                <button type="submit" style="width:100%;margin-top:24px;background:var(--eden-terracotta);color:#fff;padding:17px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border:none;border-radius:2px;cursor:pointer;">Book an appointment</button>
-                <p style="margin:16px 0 0;font-size:12px;line-height:1.55;color:#8a8371;">By submitting, you consent to Zenterra contacting you about Eden. We respect your privacy, your information is never sold or shared, and you may unsubscribe at any time. This is not an offering for sale; E.&amp;O.E.</p>
-              </form>
-            </sc-if>
+              </sc-if>
+              <dc-import name="EdenBookForm" eyebrow="Price list &amp; floorplans" title="Get the Price List &amp; Floorplan Package" sub="Current pricing, every Eden floorplan and availability, sent to your inbox. Prefer to visit? Choose Book on any page." cta="Get Pricing &amp; Floorplans" f="{{ regForm }}" hint-size="100%,600px"></dc-import>
           </div>
         </div>
       </section>
@@ -1038,7 +1011,23 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
    </main></div>
 
    <sc-if value="{{ showCta }}" hint-placeholder-val="{{ true }}">
-    <dc-import name="EdenCta" go="{{ goBook }}" hint-size="100%,320px"></dc-import>
+    <section data-eden-form="1" style="background:var(--eden-moss);padding:clamp(48px,7vw,96px) 28px;">
+      <div style="max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(28px,5vw,64px);align-items:center;">
+        <div style="min-width:0;">
+          <p style="margin:0 0 14px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--eden-wheat);font-weight:700;">VIP list</p>
+          <h2 style="font-family:var(--font-serif);font-weight:300;font-size:clamp(28px,4vw,46px);line-height:1.1;margin:0;color:#fff;text-wrap:pretty;">Ready to grow with us?</h2>
+          <p style="font-size:17px;line-height:1.65;color:rgba(244,237,225,.86);font-weight:300;margin:18px 0 0;max-width:460px;text-wrap:pretty;">Join the VIP list to hear about presale incentives first and get priority access to Eden homes.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(244,237,225,.2);max-width:460px;">
+            <div><p style="margin:0;font-family:var(--font-serif);font-size:clamp(26px,3vw,34px);color:#fff;font-weight:300;">30+</p><p style="margin:4px 0 0;font-size:12.5px;line-height:1.4;color:rgba(244,237,225,.78);">years building in BC</p></div>
+            <div><p style="margin:0;font-family:var(--font-serif);font-size:clamp(26px,3vw,34px);color:#fff;font-weight:300;">20+</p><p style="margin:4px 0 0;font-size:12.5px;line-height:1.4;color:rgba(244,237,225,.78);">communities delivered</p></div>
+            <div><p style="margin:0;font-family:var(--font-serif);font-size:clamp(26px,3vw,34px);color:#fff;font-weight:300;">2,000</p><p style="margin:4px 0 0;font-size:12.5px;line-height:1.4;color:rgba(244,237,225,.78);">homes built</p></div>
+          </div>
+        </div>
+        <div style="min-width:0;background:#fff;border-radius:3px;padding:clamp(24px,4vw,40px);box-shadow:0 1px 2px rgba(0,0,0,.06);">
+          <dc-import name="EdenBookForm" eyebrow="VIP list" title="Join the VIP List" sub="For presale incentives &amp; priority access." cta="Join the VIP List" f="{{ vipForm }}" hint-size="100%,600px"></dc-import>
+        </div>
+      </div>
+    </section>
    </sc-if>
 
    <!-- ============ FOOTER ============ -->
@@ -1088,6 +1077,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
        </div>
      </div>
    </footer>
+   <div aria-hidden="true" style="height:{{ barSpacer }}px;"></div>
 
   
 
@@ -1169,27 +1159,20 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
       </div>
     </div>
   </sc-if>
-  <sc-if value="{{ showMobileBar }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed;left:0;right:0;bottom:0;z-index:300;background:var(--eden-moss);padding:11px 14px calc(11px + env(safe-area-inset-bottom));box-shadow:0 -4px 18px rgba(0,0,0,.22);">
-      <a href="#" onClick="{{ goBook }}" style="display:block;text-align:center;background:var(--eden-terracotta);color:#fff;padding:15px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;">Book an appointment</a>
+  <sc-if value="{{ mobileBarOn }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;left:0;right:0;bottom:0;z-index:300;background:var(--eden-moss);padding:10px 14px calc(10px + env(safe-area-inset-bottom)) calc(14px + env(safe-area-inset-left));padding-right:calc(14px + env(safe-area-inset-right));box-shadow:0 -4px 18px rgba(0,0,0,.22);display:flex;gap:10px;">
+      <a href="#" onClick="{{ goPricingBar }}" style="flex:1.7 1 0;display:flex;align-items:center;justify-content:center;min-height:50px;background:var(--eden-terracotta);color:#fff;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;text-decoration:none;">Get Pricing</a>
+      <a href="#" onClick="{{ goBookBar }}" style="flex:1 1 0;display:flex;align-items:center;justify-content:center;min-height:50px;background:transparent;border:1px solid rgba(244,237,225,.6);color:var(--eden-sand);font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;text-decoration:none;box-sizing:border-box;">Book</a>
     </div>
   </sc-if>
 
   <sc-if value="{{ nudgeOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="{{ nudgeWrapStyle }}">
-      <div style="pointer-events:auto;width:100%;max-width:540px;background:#fff;border:1px solid rgba(52,68,49,.14);border-radius:4px;box-shadow:0 18px 44px rgba(20,28,18,.3);padding:18px 18px 16px;animation:edenFade .4s ease both;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;">
-          <div>
-            <p style="margin:0 0 4px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--eden-terracotta);font-weight:700;">Now selling</p>
-            <p style="margin:0;font-family:var(--font-serif);font-size:19px;line-height:1.25;color:var(--eden-moss);">Want pricing for these homes?</p>
-          </div>
-          <button onClick="{{ nudgeClose }}" aria-label="Dismiss" style="flex:none;width:32px;height:32px;border:none;background:rgba(52,68,49,.08);color:var(--eden-sage);border-radius:50%;font-size:17px;line-height:1;cursor:pointer;">×</button>
+    <div role="dialog" aria-label="Get the price list" style="{{ nudgeWrapStyle }}">
+      <div style="{{ nudgeCardStyle }}">
+        <div style="display:flex;justify-content:flex-end;margin-bottom:-6px;">
+          <button onClick="{{ nudgeClose }}" aria-label="Close" style="width:44px;height:44px;border:none;background:rgba(52,68,49,.08);color:var(--eden-moss);border-radius:50%;font-size:20px;line-height:1;cursor:pointer;">×</button>
         </div>
-        <form onSubmit="{{ nudgeSubmit }}" style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;">
-          <input required="{{ true }}" type="email" autoComplete="email" value="{{ formEmail }}" onInput="{{ setEmail }}" placeholder="Email" style="flex:1 1 150px;min-width:0;padding:13px 14px;border:1px solid rgba(52,68,49,.25);border-radius:2px;background:#fff;font-family:var(--font-sans);font-size:16px;color:var(--eden-moss);box-sizing:border-box;">
-          <input required="{{ true }}" type="tel" autoComplete="tel" value="{{ formPhone }}" onInput="{{ setPhone }}" placeholder="Phone" style="flex:1 1 150px;min-width:0;padding:13px 14px;border:1px solid rgba(52,68,49,.25);border-radius:2px;background:#fff;font-family:var(--font-sans);font-size:16px;color:var(--eden-moss);box-sizing:border-box;">
-          <button type="submit" style="flex:1 1 100%;background:var(--eden-terracotta);color:#fff;padding:15px;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border:none;border-radius:2px;cursor:pointer;font-family:var(--font-sans);">Book an appointment</button>
-        </form>
+        <dc-import name="EdenBookForm" eyebrow="Price list &amp; floorplans" title="{{ nudgeTitle }}" sub="Current pricing and the floorplan package, sent to your inbox." cta="Get Pricing &amp; Floorplans" f="{{ nudgeForm }}" hint-size="100%,560px"></dc-import>
       </div>
     </div>
   </sc-if>
@@ -1211,12 +1194,13 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
             </div>
           </div>
         </sc-if>
-        <dc-import name="EdenBookForm" title="{{ bookTitle }}" sub="{{ bookSub }}" f="{{ bookForm }}" hint-size="100%,520px"></dc-import>
+        <dc-import name="EdenBookForm" eyebrow="{{ bookEyebrow }}" title="{{ bookTitle }}" sub="{{ bookSub }}" cta="{{ bookCta }}" f="{{ bookForm }}" hint-size="100%,600px"></dc-import>
       </div>
     </div>
   </sc-if>
+
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#d07a4c&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;primaryColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#344431&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;showIllustrations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;heroTimeOfDay&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;morning&quot;,&quot;latemorning&quot;,&quot;afternoon&quot;,&quot;lateafternoon&quot;,&quot;evening&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showHeroClock&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showHeroWeather&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#d07a4c&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;primaryColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#344431&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;showIllustrations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;heroTimeOfDay&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;morning&quot;,&quot;latemorning&quot;,&quot;afternoon&quot;,&quot;lateafternoon&quot;,&quot;evening&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showHeroClock&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showHeroWeather&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;startingPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Offers&quot;}}">
 class Component extends DCLogic {
   state = {
     page: "home", scrolled: false, menuOpen: false,
@@ -1226,7 +1210,7 @@ class Component extends DCLogic {
     adminOpen: false, adminAuthed: false, adminPw: "", adminErr: false, soldOut: {},
     mosaicIdx: 0, hoverTile: null, gridW: 0, amenIdx: 0, mosaicIn: false,
     compare: [], compareOpen: false, awardYear: 2026,
-    bookOpen: false, bookTitle: "", bookSub: "", nudgeOpen: false,
+    bookOpen: false, bookOffer: "book", bookLoc: "cta", bookPlan: "", nudgeOpen: false, formInView: false, sending: false, submittedOffer: "book",
     sunPhase: (window.EdenBoot ? window.EdenBoot.phase() : "morning"), langleyTime: "", tempC: null, heroExtra: false,
   };
 
@@ -1434,6 +1418,16 @@ class Component extends DCLogic {
     this._watchMosaic();
     this._applyTheme();
     this._scheduleNudge();
+    this._captureUtm();
+    this._t0 = Date.now();
+    // Desktop exit intent: pointer leaves through the top of the window.
+    this._onExit = (e) => {
+      if (e.relatedTarget || e.clientY > 0 || this.state.isMobile) return;
+      if (Date.now() - this._t0 < 15000) return;
+      this._showNudge("exit-intent");
+    };
+    document.addEventListener("mouseout", this._onExit);
+    this._watchForms();
     this._mosaicTimer = window.setInterval(() => {
       if (this.state.page === "home" && !this._mosaicPaused) {
         this.setState((s) => ({ mosaicIdx: s.mosaicIdx + 1 }));
@@ -1481,50 +1475,119 @@ class Component extends DCLogic {
   // Header, sticky bar, hero, mid-page blocks and the explorer nudge all
   // open THIS drawer, which renders the same EdenBookForm and posts through
   // the same submitForm/Zapier handler as the Register page.
-  _BOOK_TITLE = "Book a private appointment";
-  _BOOK_SUB = "See pricing, floorplans and availability with our sales team at the Willoughby Town Centre showhome.";
-  _openBook(title, sub, source) {
+  // Three offers, one form component, one payload. The offer only changes
+  // the headline and the hidden `offer` value sent to Follow Up Boss.
+  _OFFERS = {
+    pricing: { eyebrow: "Price list & floorplans", title: "Get the Price List & Floorplan Package", sub: "Current pricing and the full Eden floorplan package, sent to your inbox.", cta: "Get Pricing & Floorplans", thanks: "Your Eden price list and floorplan package is on its way. Check your inbox shortly." },
+    vip: { eyebrow: "VIP list", title: "Join the VIP List", sub: "For presale incentives & priority access.", cta: "Join the VIP List", thanks: "You're on the Eden VIP list. We'll be in touch about presale incentives and priority access." },
+    book: { eyebrow: "Now selling", title: "Book a Private Appointment", sub: "Meet our sales team at the Willoughby Town Centre showhome for pricing, floorplans and availability.", cta: "Book an Appointment", thanks: "Our sales team will call to confirm your appointment at the showhome." },
+  };
+  _openBook(offer, source, plan) {
     return (e) => {
       if (e && e.preventDefault) e.preventDefault();
       this._clearNudge();
       this._markNudge();
-      this.setState({
-        bookOpen: true, nudgeOpen: false, menuOpen: false,
-        bookTitle: title || this._BOOK_TITLE, bookSub: sub || this._BOOK_SUB,
-      });
+      const p = typeof plan === "function" ? plan() : (plan || "");
+      this.setState({ bookOpen: true, nudgeOpen: false, menuOpen: false, bookOffer: offer || "pricing", bookLoc: source || "cta", bookPlan: p });
       try {
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "book_open", book_source: source || "cta" });
+        window.dataLayer.push({ event: "book_open", book_source: source || "cta", offer: offer || "pricing", plan: p });
       } catch (err) { /* analytics unavailable */ }
     };
   }
+  _captureUtm() {
+    try {
+      const saved = window.sessionStorage.getItem("eden.utm");
+      if (saved) { this._utm = JSON.parse(saved) || {}; return; }
+      const q = new URLSearchParams(window.location.search);
+      const u = {};
+      ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid"].forEach((k) => { const v = q.get(k); if (v) u[k] = v; });
+      u.landing_page = window.location.pathname + window.location.search;
+      u.referrer = document.referrer || "";
+      this._utm = u;
+      window.sessionStorage.setItem("eden.utm", JSON.stringify(u));
+    } catch (err) { this._utm = this._utm || {}; }
+  }
+  _formProps(offer, loc, plan) {
+    const s = this.state;
+    const done = this._OFFERS[s.submittedOffer] || this._OFFERS.pricing;
+    return {
+      submitted: s.submitted, notSubmitted: !s.submitted,
+      submittedName: s.submittedName || "there", thanks: done.thanks,
+      first: s.fFirst, email: s.fEmail, phone: s.fPhone, beds: s.fBeds,
+      realtor: s.fRealtor === "yes", sending: !!s.sending,
+      setFirst: (e) => this.setState({ fFirst: e.target.value }),
+      setEmail: (e) => this.setState({ fEmail: e.target.value }),
+      setPhone: (e) => this.setState({ fPhone: e.target.value }),
+      setBeds: (e) => this.setState({ fBeds: e.target.value }),
+      toggleRealtor: (e) => this.setState({ fRealtor: e.target.checked ? "yes" : "no" }),
+      submit: this._submitLead(offer, loc, plan),
+    };
+  }
   // Every entry point posts the same payload to the same Zapier hook.
-  _submitLead(source) {
+  // The in-flight / submitted guard keeps each path to exactly one lead.
+  _submitLead(offer, loc, plan) {
     return (e) => {
       if (e && e.preventDefault) e.preventDefault();
       const s = this.state;
+      if (this._sending || s.submitted) return;
+      this._sending = true;
+      const p = typeof plan === "function" ? plan() : (plan || "");
+      const utm = this._utm || {};
+      const payload = {
+        firstName: (s.fFirst || "").trim(), lastName: "", email: (s.fEmail || "").trim(), phone: (s.fPhone || "").trim(),
+        beds: s.fBeds, realtor: s.fRealtor === "yes" ? "yes" : "no",
+        offer, plan: p, formLocation: loc, inquiry: offer,
+        plans: (s.compare || []).join(", "),
+        tags: "Eden_Website", source: "edenbyzenterra.ca", entryPoint: loc, pageSection: s.page,
+        utm_source: utm.utm_source || "", utm_medium: utm.utm_medium || "", utm_campaign: utm.utm_campaign || "",
+        utm_term: utm.utm_term || "", utm_content: utm.utm_content || "", gclid: utm.gclid || "", fbclid: utm.fbclid || "",
+        landingPage: utm.landing_page || "", referrer: utm.referrer || "",
+        submittedAt: new Date().toISOString(),
+      };
       try {
         fetch("https://hooks.zapier.com/hooks/catch/11699296/4tw2rgd/", {
-          method: "POST",
-          mode: "no-cors",
+          method: "POST", mode: "no-cors", keepalive: true,
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            firstName: s.fFirst, lastName: s.fLast, email: s.fEmail, phone: s.fPhone,
-            beds: s.fBeds, realtor: s.fRealtor, inquiry: s.fInquiry,
-            plans: (s.compare || []).join(", "),
-            source: "edenbyzenterra.ca", entryPoint: source || "register-page",
-            submittedAt: new Date().toISOString(),
-          }),
+          body: JSON.stringify(payload),
         }).catch((err) => console.error("Zapier webhook failed", err));
       } catch (err) { console.error("Zapier webhook failed", err); }
       try {
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "generate_lead", form_source: source || "register-page" });
+        window.dataLayer.push({ event: "generate_lead", form_source: loc, offer, form_location: loc, plan: p });
       } catch (err) { /* analytics unavailable */ }
       this._clearNudge();
       this._markNudge();
-      this.setState({ submitted: true, submittedName: (s.fFirst || "").trim() || "there" });
+      this.setState({ submitted: true, submittedOffer: offer, submittedName: payload.firstName || "there" }, () => { this._sending = false; });
     };
+  }
+  _showNudge(reason) {
+    const s = this.state;
+    if (s.bookOpen || s.submitted || s.nudgeOpen || this._nudgeSeen()) return;
+    const ae = document.activeElement;
+    if (s.zoomOpen || (ae && /^(input|textarea|select)$/i.test(ae.tagName || ""))) return;
+    this._markNudge();
+    this.setState({ nudgeOpen: true });
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "book_nudge_shown", page_section: s.page, nudge_reason: reason });
+    } catch (err) { /* analytics unavailable */ }
+  }
+  // Hides the sticky bar whenever any inline form is on screen.
+  _watchForms() {
+    if (!("IntersectionObserver" in window)) return;
+    if (!this._formObs) {
+      this._formEls = new Set(); this._formsOn = new Set();
+      this._formObs = new IntersectionObserver((ents) => {
+        ents.forEach((en) => { if (en.isIntersecting) this._formsOn.add(en.target); else this._formsOn.delete(en.target); });
+        const v = this._formsOn.size > 0;
+        if (v !== this.state.formInView) this.setState({ formInView: v });
+      });
+    }
+    this._formEls.forEach((el) => { if (!el.isConnected) { this._formObs.unobserve(el); this._formEls.delete(el); this._formsOn.delete(el); } });
+    document.querySelectorAll("[data-eden-form]").forEach((el) => { if (!this._formEls.has(el)) { this._formEls.add(el); this._formObs.observe(el); } });
+    const v = this._formsOn.size > 0;
+    if (v !== this.state.formInView) this.setState({ formInView: v });
   }
   _clearNudge() { if (this._nudgeTimer) { window.clearTimeout(this._nudgeTimer); this._nudgeTimer = null; } }
   _nudgeSeen() { try { return window.sessionStorage.getItem("eden.nudge") === "1"; } catch (err) { return true; } }
@@ -1544,19 +1607,14 @@ class Component extends DCLogic {
       const ae = document.activeElement;
       const busy = s.zoomOpen || (ae && /^(input|textarea|select)$/i.test(ae.tagName || ""));
       if (busy) { this._nudgeTimer = window.setTimeout(fire, 8000); return; }
-      this._markNudge();
-      this.setState({ nudgeOpen: true });
-      try {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "book_nudge_shown", page_section: s.page });
-      } catch (err) { /* analytics unavailable */ }
+      this._showNudge("dwell");
     };
     this._nudgeTimer = window.setTimeout(fire, 35000);
   }
   // The runtime does not reliably hand us prevState, so the two values that
   // drive side effects are latched on the instance instead.
   componentDidUpdate() {
-    this._paintHero(); this._applyTheme(); this._measureGrid(); this._watchMosaic(); this._tickSun(); this._trackPage(this.state.page);
+    this._paintHero(); this._applyTheme(); this._measureGrid(); this._watchMosaic(); this._tickSun(); this._trackPage(this.state.page); this._watchForms();
     const open = !!this.state.bookOpen;
     const key = this.state.page + "|" + (this.state.submitted ? 1 : 0) + "|" + (open ? 1 : 0);
     if (this._nudgeKey !== key) { this._nudgeKey = key; this._scheduleNudge(); }
@@ -1573,6 +1631,8 @@ class Component extends DCLogic {
     window.clearInterval(this._mosaicTimer);
     window.clearInterval(this._amenTimer);
     this._clearNudge();
+    document.removeEventListener("mouseout", this._onExit);
+    if (this._formObs) this._formObs.disconnect();
   }
 
   _applyTheme() {
@@ -1690,7 +1750,11 @@ class Component extends DCLogic {
       };
     });
     const mobileNavItems = pages.map(([k, label]) => ({ label, go: this.nav(k) }));
-    mobileNavItems.push({ label: "Book an appointment", go: this._openBook(null, null, "mobile-menu") });
+    const blogHref = /\.dc\.html$/i.test(window.location.pathname) ? "export/site/blog/index.html" : "/blog";
+    const goBlog = (e) => { if (e) e.preventDefault(); window.location.href = blogHref; };
+    navItems.push({ label: "Blog", go: goBlog, style: navItems[0].style.replace("color:var(--eden-wheat)", "color:" + linkColor).replace("background:rgba(255,255,255,.09)", "background:transparent") });
+    mobileNavItems.push({ label: "Blog", go: goBlog });
+    mobileNavItems.push({ label: "Book an appointment", go: this._openBook("book", "mobile-menu") });
 
     // Amenities carousel - one photo at a time, auto-advancing with a soft crossfade.
     // Amenities carousel - one slide per amenity below, in the same order.
@@ -1873,7 +1937,8 @@ class Component extends DCLogic {
           if (next[p.id]) delete next[p.id]; else next[p.id] = true;
           this._saveSold(next);
         },
-        open: (e) => { if (e) e.preventDefault(); window.scrollTo({ top: 0 }); this.setState({ activePlan: p }); },
+        open: (e) => { if (e) e.preventDefault(); this._lastPlan = p.name; window.scrollTo({ top: 0 }); this.setState({ activePlan: p }); },
+        getPricing: (e) => { this._lastPlan = p.name; this._openBook("pricing", "floorplan-card", p.name)(e); },
       }));
     // Shortlist / compare - up to three plans, side by side, and the picks
     // travel into the registration form.
@@ -2165,37 +2230,40 @@ class Component extends DCLogic {
       goFloorplans: this.nav("floorplans"),
 
       // One booking flow, opened from every CTA on the site.
-      goBook: this._openBook(null, null, "cta"),
+      goBook: this._openBook("book", "cta"),
+      goHeaderCta: this._openBook("pricing", "header-register"),
+      goPricingHero: this._openBook("pricing", "hero"),
+      goPricingBar: this._openBook("pricing", "mobile-bar"),
+      goBookBar: this._openBook("book", "mobile-bar"),
       // Step 1 of the progressive ask: the email carries into the drawer.
-      quickAsk: this._openBook(null, null, "hero-band"),
-      bookThisPlan: this._openBook("Want pricing for this plan?",
-        "Book a private appointment and we will bring pricing, availability and deposit details for the plan you are looking at.", "plan-detail"),
+      quickAsk: this._openBook("pricing", "hero-band"),
+      bookThisPlan: this._openBook("pricing", "plan-detail", () => (this.state.activePlan ? this.state.activePlan.name : "")),
       closeBook: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ bookOpen: false }); },
       stopProp: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
       bookOpen: !!this.state.bookOpen,
-      bookTitle: this.state.bookTitle || this._BOOK_TITLE,
-      bookSub: this.state.bookSub || this._BOOK_SUB,
+      bookTitle: (this.state.bookPlan && this.state.bookOffer === "pricing") ? `Get pricing for ${this.state.bookPlan}` : (this._OFFERS[this.state.bookOffer] || this._OFFERS.book).title,
+      bookSub: (this.state.bookPlan && this.state.bookOffer === "pricing") ? "The price list and floorplan package for this plan, sent to your inbox." : (this._OFFERS[this.state.bookOffer] || this._OFFERS.book).sub,
+      bookEyebrow: (this._OFFERS[this.state.bookOffer] || this._OFFERS.book).eyebrow,
+      bookCta: (this._OFFERS[this.state.bookOffer] || this._OFFERS.book).cta,
       bookAlign: isMobile ? "flex-end" : "center",
       bookSheetStyle: `position:relative;width:100%;max-width:${isMobile ? "100%" : "620px"};margin:${isMobile ? "auto 0 0" : "auto"};background:var(--eden-ivory);border-radius:${isMobile ? "10px 10px 0 0" : "4px"};padding:${isMobile ? "18px 18px calc(22px + env(safe-area-inset-bottom))" : "28px 32px 32px"};box-shadow:0 -10px 50px rgba(20,28,18,.4);animation:edenFade .3s ease both;`,
-      bookForm: {
-        submitted: this.state.submitted, notSubmitted: !this.state.submitted,
-        submittedName: this.state.submittedName || "there",
-        first: this.state.fFirst, last: this.state.fLast, email: this.state.fEmail,
-        phone: this.state.fPhone, beds: this.state.fBeds,
-        setFirst: (e) => this.setState({ fFirst: e.target.value }),
-        setLast: (e) => this.setState({ fLast: e.target.value }),
-        setEmail: (e) => this.setState({ fEmail: e.target.value }),
-        setPhone: (e) => this.setState({ fPhone: e.target.value }),
-        setBeds: (e) => this.setState({ fBeds: e.target.value }),
-        submit: this._submitLead("book-drawer"),
-      },
+      bookForm: this._formProps(this.state.bookOffer || "book", this.state.bookLoc || "book-drawer", this.state.bookPlan),
+      fpForm: this._formProps("pricing", "after-floorplans"),
+      amenForm: this._formProps("pricing", "after-amenities"),
+      vipForm: this._formProps("vip", "footer-vip"),
+      regForm: this._formProps("pricing", "register-page"),
+      nudgeForm: this._formProps("pricing", "explorer-nudge", () => this._lastPlan || ""),
+      nudgeTitle: this._lastPlan ? `Want the price list for ${this._lastPlan}?` : "Want the Eden price list?",
+      hasStartPrice: !!String(this.props.startingPrice ?? "").trim(),
+      startingPrice: String(this.props.startingPrice ?? "").trim(),
+      mobileBarOn: showMobileBar && !this.state.formInView && !this.state.bookOpen && !this.state.nudgeOpen,
+      barSpacer: showMobileBar ? 74 : 0,
       nudgeOpen: !!this.state.nudgeOpen && !this.state.bookOpen,
-      nudgeWrapStyle: `position:fixed;left:0;right:0;bottom:${isMobile ? "calc(78px + env(safe-area-inset-bottom))" : "18px"};z-index:290;padding:0 14px;display:flex;justify-content:center;pointer-events:none;`,
+      nudgeWrapStyle: isMobile
+        ? "position:fixed;left:0;right:0;bottom:0;z-index:950;display:flex;justify-content:center;pointer-events:none;"
+        : "position:fixed;right:24px;bottom:24px;z-index:950;pointer-events:none;",
+      nudgeCardStyle: `pointer-events:auto;box-sizing:border-box;width:${isMobile ? "100%" : "440px"};max-height:${isMobile ? "86dvh" : "calc(100vh - 48px)"};overflow-y:auto;overscroll-behavior:contain;background:var(--eden-ivory);border-radius:${isMobile ? "12px 12px 0 0" : "4px"};padding:${isMobile ? "12px 18px calc(18px + env(safe-area-inset-bottom))" : "14px 24px 24px"};box-shadow:0 -10px 40px rgba(20,28,18,.3);animation:edenFade .3s ease both;`,
       nudgeClose: (e) => { if (e && e.preventDefault) e.preventDefault(); this._markNudge(); this.setState({ nudgeOpen: false }); },
-      nudgeSubmit: (e) => {
-        this._submitLead("explorer-nudge")(e);
-        this.setState({ nudgeOpen: false, bookOpen: true, bookTitle: this._BOOK_TITLE, bookSub: this._BOOK_SUB });
-      },
 
       heroRef: this._heroRef, heroLayers, heroExtraOn,
       heroTileDisplay: isMobile ? "none" : "flex",
@@ -2275,8 +2343,7 @@ class Component extends DCLogic {
       cmpToRegister: (e) => {
         if (e) e.preventDefault();
         this.setState({ compareOpen: false });
-        this._openBook("Want pricing for your shortlist?",
-          "Book a private appointment and our sales team will bring pricing and availability for the plans you shortlisted.", "compare-panel")(e);
+        this._openBook("pricing", "compare-panel")(e);
       },
 
       adminOpen: !!this.state.adminOpen,
