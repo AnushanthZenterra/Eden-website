@@ -30,7 +30,7 @@ bar) push `book_click` to the dataLayer; every page pushes `page_view`.
 Add a post:
 1. Copy `content/blog/_template.html` to `content/blog/<slug>.html`.
 2. Fill the JSON front matter and paste the body HTML. Remove `"draft": true`.
-3. From `export/site/` run `node scripts/build-blog.mjs`.
+3. From the repository root run `node scripts/build-blog.mjs`.
 4. Deploy. `blog/`, `sitemap.xml` and `llms.txt` are regenerated.
 
 Moving posts from zenterra.ca: when a post goes live here, 301 the zenterra.ca
