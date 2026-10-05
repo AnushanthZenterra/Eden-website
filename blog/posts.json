@@ -1,5 +1,14 @@
 [
  {
+  "slug": "new-arenas-at-langley-events-centre-willoughby",
+  "title": "New ARENAS at Langley Events Centre Bring More Recreation to Willoughby",
+  "description": "New ARENAS now open at Langley Events Centre, steps from Eden and Solana in Willoughby. Book a tour and explore the nearby amenities today.",
+  "date": "2026-09-10",
+  "category": "Community Update",
+  "image": "https://zenterra.ca/wp-content/uploads/2026/09/arenas-langley-events-centre-feature-rink.jpg",
+  "url": "/blog/new-arenas-at-langley-events-centre-willoughby"
+ },
+ {
   "slug": "construction-has-started-at-eden",
   "title": "Construction Has Started at Eden",
   "description": "Eden is a presale condo community in Willoughby, Langley, now under construction. Homes from $374,990 with 10% deposits. Tour the showhome today.",
@@ -7,5 +16,14 @@
   "category": "Community Update",
   "image": "https://zenterra.ca/wp-content/uploads/2026/08/Eden-1.png",
   "url": "/blog/construction-has-started-at-eden"
+ },
+ {
+  "slug": "langley-brt-station-coming-next-to-eden-presale-condos",
+  "title": "New Condos in Willoughby, Langley: Buy Before the BRT and SkyTrain Change Everything",
+  "description": "New planned Langley BRT Station connects Eden Presale condos in Willoughby to future Skytrain station, Willowbrook mall, & more",
+  "date": "2026-05-07",
+  "category": "News",
+  "image": "https://zenterra.ca/wp-content/uploads/2026/05/Centre_Day_No-Red.jpg",
+  "url": "/blog/langley-brt-station-coming-next-to-eden-presale-condos"
  }
 ]

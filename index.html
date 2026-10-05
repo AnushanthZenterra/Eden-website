@@ -116,7 +116,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
           <a href="#" onClick="{{ item.go }}" style="{{ item.style }}" style-hover="color:#fff;background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.34);-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -6px 12px -8px rgba(255,255,255,.35),0 8px 20px -6px rgba(20,28,18,.45);transform:translateY(-1px);">{{ item.label }}</a>
         </sc-for>
       </nav>
-      <a href="#" onClick="{{ goHeaderCta }}" style="{{ navCtaStyle }}" style-hover="background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.04)),var(--eden-terracotta);border-color:rgba(255,255,255,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 10px 24px -8px rgba(20,28,18,.55);transform:translateY(-1px);" data-nav="cta">Book appointment</a>
+      <a href="#" onClick="{{ goHeaderCta }}" style="{{ navCtaStyle }}" style-hover="background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.04)),var(--eden-terracotta);border-color:rgba(255,255,255,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 10px 24px -8px rgba(20,28,18,.55);transform:translateY(-1px);" data-nav="cta">Get Pricing</a>
       <button onClick="{{ toggleMenu }}" aria-label="Menu" style="{{ hamburgerStyle }}">
         <span style="display:block;width:22px;height:2px;background:currentColor;margin:4px 0;"></span>
         <span style="display:block;width:22px;height:2px;background:currentColor;margin:4px 0;"></span>
@@ -566,8 +566,8 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
                   </sc-for>
                 </div>
                 <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;">
-                  <a href="{{ activePlanPdf }}" onClick="{{ downloadPlan }}" download="{{ activePlanPdfName }}" style="background:var(--eden-terracotta);color:#fff;padding:15px 26px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;">↓ Download plan</a>
-                  <a href="#" onClick="{{ bookThisPlan }}" style="border:1px solid var(--eden-moss);color:var(--eden-moss);padding:15px 26px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;">Book an appointment</a>
+                  <a href="#" onClick="{{ bookThisPlan }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:50px;flex:1 1 220px;background:var(--eden-terracotta);color:#fff;padding:15px 26px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;box-sizing:border-box;">Get pricing for this plan</a>
+                  <a href="{{ activePlanPdf }}" onClick="{{ downloadPlan }}" download="{{ activePlanPdfName }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:50px;flex:1 1 180px;border:1px solid var(--eden-moss);color:var(--eden-moss);padding:15px 26px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;box-sizing:border-box;">Download plan PDF</a>
                 </div>
               </div>
             </div>
@@ -592,11 +592,11 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
                     </sc-if>
                   </div>
                   <div style="padding:22px;display:flex;flex-direction:column;flex:1;">
-                    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+                    <div onClick="{{ p.open }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;cursor:pointer;">
                       <h3 style="font-family:var(--font-serif);font-weight:400;font-size:24px;margin:0;color:var(--eden-moss);">{{ p.name }}</h3>
                       <span style="font-family:var(--font-serif);color:var(--eden-terracotta);font-size:18px;white-space:nowrap;">{{ p.sqft }} ft²</span>
                     </div>
-                    <p style="margin:8px 0 0;font-size:14px;color:#7c7563;">{{ p.summary }}</p>
+                    <p onClick="{{ p.open }}" style="margin:8px 0 0;font-size:14px;color:#7c7563;cursor:pointer;">{{ p.summary }}</p>
                     <div style="display:flex;gap:14px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(52,68,49,.1);">
                       <a href="#" onClick="{{ p.open }}" style="display:inline-flex;align-items:center;min-height:40px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;color:var(--eden-moss);">View details</a>
                       <a href="{{ p.pdf }}" onClick="{{ p.download }}" download="{{ p.pdfName }}" style="display:inline-flex;align-items:center;min-height:40px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;color:var(--eden-terracotta);">↓ Plan</a>
@@ -615,7 +615,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
       </sc-if>
       <section data-eden-form="1" style="background:var(--eden-sand);padding:clamp(44px,6vw,80px) 28px;">
         <div style="max-width:760px;margin:0 auto;background:#fff;border:1px solid rgba(52,68,49,.12);border-radius:3px;padding:clamp(24px,4vw,40px);box-shadow:0 1px 2px rgba(0,0,0,.06);">
-          <dc-import name="EdenBookForm" eyebrow="Price list &amp; floorplans" title="Get the Price List &amp; Floorplan Package" sub="Current pricing for every Eden plan, plus the full floorplan package, sent to your inbox." cta="Get Pricing &amp; Floorplans" f="{{ fpForm }}" hint-size="100%,600px"></dc-import>
+          <dc-import name="EdenBookForm" eyebrow="Pricing, floorplans &amp; private showings" title="Get Pricing &amp; Floorplans" sub="Found a plan you like? Get current pricing and the floorplan package by email, or tick the box to book a private showhome appointment." cta="Get Pricing &amp; Floorplans" f="{{ fpForm }}" hint-size="100%,600px"></dc-import>
         </div>
       </section>
     </sc-if>
@@ -684,7 +684,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
         </section>
       <section data-eden-form="1" style="background:var(--eden-sand);padding:clamp(44px,6vw,80px) 28px;">
         <div style="max-width:760px;margin:0 auto;background:#fff;border:1px solid rgba(52,68,49,.12);border-radius:3px;padding:clamp(24px,4vw,40px);box-shadow:0 1px 2px rgba(0,0,0,.06);">
-          <dc-import name="EdenBookForm" eyebrow="Price list &amp; floorplans" title="Get the Price List &amp; Floorplan Package" sub="See what each home costs alongside the shared spaces you just explored. Pricing and floorplans, sent to your inbox." cta="Get Pricing &amp; Floorplans" f="{{ amenForm }}" hint-size="100%,600px"></dc-import>
+          <dc-import name="EdenBookForm" eyebrow="Pricing, floorplans &amp; private showings" title="Get Pricing &amp; Floorplans" sub="See the amenities in person. Get pricing and floorplans by email, or tick the box and we'll book a private showhome tour." cta="Get Pricing &amp; Floorplans" f="{{ amenForm }}" hint-size="100%,600px"></dc-import>
         </div>
       </section>
       </sc-if></div>
@@ -1002,7 +1002,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
                 </div>
               </sc-if>
               </sc-if>
-              <dc-import name="EdenBookForm" eyebrow="Price list &amp; floorplans" title="Get the Price List &amp; Floorplan Package" sub="Current pricing, every Eden floorplan and availability, sent to your inbox. Prefer to visit? Choose Book on any page." cta="Get Pricing &amp; Floorplans" f="{{ regForm }}" hint-size="100%,600px"></dc-import>
+              <dc-import name="EdenBookForm" eyebrow="Pricing, floorplans &amp; private showings" title="Get Pricing &amp; Floorplans" sub="Current pricing, every Eden floorplan and availability, sent to your inbox. Prefer to see it in person? Tick the box for a private showhome appointment." cta="Get Pricing &amp; Floorplans" f="{{ regForm }}" hint-size="100%,600px"></dc-import>
           </div>
         </div>
       </section>
@@ -1014,9 +1014,9 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
     <section data-eden-form="1" style="background:var(--eden-moss);padding:clamp(48px,7vw,96px) 28px;">
       <div style="max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(28px,5vw,64px);align-items:center;">
         <div style="min-width:0;">
-          <p style="margin:0 0 14px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--eden-wheat);font-weight:700;">VIP list</p>
+          <p style="margin:0 0 14px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--eden-wheat);font-weight:700;">Now selling · Willoughby, Langley</p>
           <h2 style="font-family:var(--font-serif);font-weight:300;font-size:clamp(28px,4vw,46px);line-height:1.1;margin:0;color:#fff;text-wrap:pretty;">Ready to grow with us?</h2>
-          <p style="font-size:17px;line-height:1.65;color:rgba(244,237,225,.86);font-weight:300;margin:18px 0 0;max-width:460px;text-wrap:pretty;">Join the VIP list to hear about presale incentives first and get priority access to Eden homes.</p>
+          <p style="font-size:17px;line-height:1.65;color:rgba(244,237,225,.86);font-weight:300;margin:18px 0 0;max-width:460px;text-wrap:pretty;">Get current pricing and the floorplan package for Eden's 1, 2 &amp; 3 bedroom homes. No obligation.</p>
           <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(244,237,225,.2);max-width:460px;">
             <div><p style="margin:0;font-family:var(--font-serif);font-size:clamp(26px,3vw,34px);color:#fff;font-weight:300;">30+</p><p style="margin:4px 0 0;font-size:12.5px;line-height:1.4;color:rgba(244,237,225,.78);">years building in BC</p></div>
             <div><p style="margin:0;font-family:var(--font-serif);font-size:clamp(26px,3vw,34px);color:#fff;font-weight:300;">20+</p><p style="margin:4px 0 0;font-size:12.5px;line-height:1.4;color:rgba(244,237,225,.78);">communities delivered</p></div>
@@ -1024,7 +1024,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
           </div>
         </div>
         <div style="min-width:0;background:#fff;border-radius:3px;padding:clamp(24px,4vw,40px);box-shadow:0 1px 2px rgba(0,0,0,.06);">
-          <dc-import name="EdenBookForm" eyebrow="VIP list" title="Join the VIP List" sub="For presale incentives &amp; priority access." cta="Join the VIP List" f="{{ vipForm }}" hint-size="100%,600px"></dc-import>
+          <dc-import name="EdenBookForm" eyebrow="Pricing, floorplans &amp; private showings" title="Get Pricing &amp; Floorplans" sub="Current pricing and the floorplan package, sent to your inbox. Tick the box to book a private showhome appointment." cta="Get Pricing &amp; Floorplans" f="{{ vipForm }}" hint-size="100%,600px"></dc-import>
         </div>
       </div>
     </section>
@@ -1035,7 +1035,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
      <div style="border-bottom:1px solid rgba(255,255,255,.1);">
        <div style="max-width:var(--maxw);margin:0 auto;padding:clamp(40px,6vw,68px) 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
          <h2 style="font-family:var(--font-serif);font-weight:300;font-size:clamp(24px,3.4vw,38px);margin:0;color:#fff;">Room to put down roots.</h2>
-         <a href="#" onClick="{{ goBook }}" style="background:var(--eden-terracotta);color:#fff;padding:16px 32px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;white-space:nowrap;">Book an appointment</a>
+         <a href="#" onClick="{{ goBook }}" style="background:var(--eden-terracotta);color:#fff;padding:16px 32px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;white-space:nowrap;">Get Pricing &amp; Floorplans</a>
        </div>
      </div>
      <div style="max-width:var(--maxw);margin:0 auto;padding:clamp(40px,6vw,64px) 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:36px;">
@@ -1108,7 +1108,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
               <h2 style="font-family:var(--font-serif);font-weight:300;font-size:clamp(26px,3.6vw,40px);margin:0;color:#fff;">Side by side</h2>
             </div>
             <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-              <a href="#" onClick="{{ cmpToRegister }}" style="background:var(--eden-terracotta);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:13px 22px;border-radius:2px;">Book an appointment</a>
+              <a href="#" onClick="{{ cmpToRegister }}" style="background:var(--eden-terracotta);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:13px 22px;border-radius:2px;">Get pricing for these plans</a>
               <a href="#" onClick="{{ cmpClosePanel }}" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:rgba(244,237,225,.75);">Back to all plans</a>
             </div>
           </div>
@@ -1161,8 +1161,7 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
   </sc-if>
   <sc-if value="{{ mobileBarOn }}" hint-placeholder-val="{{ false }}">
     <div style="position:fixed;left:0;right:0;bottom:0;z-index:300;background:var(--eden-moss);padding:10px 14px calc(10px + env(safe-area-inset-bottom)) calc(14px + env(safe-area-inset-left));padding-right:calc(14px + env(safe-area-inset-right));box-shadow:0 -4px 18px rgba(0,0,0,.22);display:flex;gap:10px;">
-      <a href="#" onClick="{{ goPricingBar }}" style="flex:1.7 1 0;display:flex;align-items:center;justify-content:center;min-height:50px;background:var(--eden-terracotta);color:#fff;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;text-decoration:none;">Get Pricing</a>
-      <a href="#" onClick="{{ goBookBar }}" style="flex:1 1 0;display:flex;align-items:center;justify-content:center;min-height:50px;background:transparent;border:1px solid rgba(244,237,225,.6);color:var(--eden-sand);font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;text-decoration:none;box-sizing:border-box;">Book</a>
+      <a href="#" onClick="{{ goPricingBar }}" style="flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:50px;background:var(--eden-terracotta);color:#fff;font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-radius:2px;text-decoration:none;">Get Pricing &amp; Floorplans</a>
     </div>
   </sc-if>
 
@@ -1172,13 +1171,13 @@ image-slot::part(image){touch-action:pan-y pinch-zoom;}
         <div style="display:flex;justify-content:flex-end;margin-bottom:-6px;">
           <button onClick="{{ nudgeClose }}" aria-label="Close" style="width:44px;height:44px;border:none;background:rgba(52,68,49,.08);color:var(--eden-moss);border-radius:50%;font-size:20px;line-height:1;cursor:pointer;">×</button>
         </div>
-        <dc-import name="EdenBookForm" eyebrow="Price list &amp; floorplans" title="{{ nudgeTitle }}" sub="Current pricing and the floorplan package, sent to your inbox." cta="Get Pricing &amp; Floorplans" f="{{ nudgeForm }}" hint-size="100%,560px"></dc-import>
+        <dc-import name="EdenBookForm" eyebrow="Price list &amp; floorplans" title="{{ nudgeTitle }}" sub="Current pricing and the floorplan package, sent to your inbox. No obligation." cta="Get Pricing &amp; Floorplans" f="{{ nudgeForm }}" hint-size="100%,560px"></dc-import>
       </div>
     </div>
   </sc-if>
 
   <sc-if value="{{ bookOpen }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ closeBook }}" role="dialog" aria-modal="true" aria-label="Book an appointment" style="position:fixed;top:0;left:0;width:100vw;height:100dvh;z-index:1000;background:rgba(20,28,18,.64);display:flex;align-items:{{ bookAlign }};justify-content:center;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;animation:edenFade .25s ease both;">
+    <div onClick="{{ closeBook }}" role="dialog" aria-modal="true" aria-label="Get pricing and floorplans" style="position:fixed;top:0;left:0;width:100vw;height:100dvh;z-index:1000;background:rgba(20,28,18,.64);display:flex;align-items:{{ bookAlign }};justify-content:center;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;animation:edenFade .25s ease both;">
       <div onClick="{{ stopProp }}" style="{{ bookSheetStyle }}">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:6px;">
           <span style="font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--eden-sage);font-weight:700;">Eden by Zenterra</span>
@@ -1411,6 +1410,16 @@ class Component extends DCLogic {
     else this._writeHash(startPage || this.state.page);
     this._trackPage(startPage || this.state.page);
     try {
+      const q = new URLSearchParams(window.location.search);
+      if (q.get("get") === "pricing") {
+        const from = (q.get("from") || "external").replace(/[^a-z0-9_-]/gi, "").slice(0, 60);
+        q.delete("get"); q.delete("from");
+        const qs = q.toString();
+        window.history.replaceState(null, "", window.location.pathname + (qs ? "?" + qs : "") + window.location.hash);
+        window.setTimeout(() => this._openBook("pricing", from || "external", q.get("plan") || "")(), 300);
+      }
+    } catch (err) { /* ignore */ }
+    try {
       const raw = window.localStorage.getItem("eden.soldOut");
       if (raw) this.setState({ soldOut: JSON.parse(raw) || {} });
     } catch (err) { /* storage unavailable */ }
@@ -1477,11 +1486,8 @@ class Component extends DCLogic {
   // the same submitForm/Zapier handler as the Register page.
   // Three offers, one form component, one payload. The offer only changes
   // the headline and the hidden `offer` value sent to Follow Up Boss.
-  _OFFERS = {
-    pricing: { eyebrow: "Price list & floorplans", title: "Get the Price List & Floorplan Package", sub: "Current pricing and the full Eden floorplan package, sent to your inbox.", cta: "Get Pricing & Floorplans", thanks: "Your Eden price list and floorplan package is on its way. Check your inbox shortly." },
-    vip: { eyebrow: "VIP list", title: "Join the VIP List", sub: "For presale incentives & priority access.", cta: "Join the VIP List", thanks: "You're on the Eden VIP list. We'll be in touch about presale incentives and priority access." },
-    book: { eyebrow: "Now selling", title: "Book a Private Appointment", sub: "Meet our sales team at the Willoughby Town Centre showhome for pricing, floorplans and availability.", cta: "Book an Appointment", thanks: "Our sales team will call to confirm your appointment at the showhome." },
-  };
+  _OFFER = { eyebrow: "Pricing, floorplans & private showings", title: "Get Pricing & Floorplans", sub: "Current pricing and the Eden floorplan package, sent to your inbox. Prefer to see it in person? Tick the box and we'll set up a private showhome appointment.", cta: "Get Pricing & Floorplans" };
+  _OFFERS = { pricing: this._OFFER, book: this._OFFER, vip: this._OFFER };
   _openBook(offer, source, plan) {
     return (e) => {
       if (e && e.preventDefault) e.preventDefault();
@@ -1510,15 +1516,17 @@ class Component extends DCLogic {
   }
   _formProps(offer, loc, plan) {
     const s = this.state;
-    const done = this._OFFERS[s.submittedOffer] || this._OFFERS.pricing;
     return {
       submitted: s.submitted, notSubmitted: !s.submitted,
-      submittedName: s.submittedName || "there", thanks: done.thanks,
+      submittedName: s.submittedName || "there", wantsAppt: !!s.submittedAppt,
+      plan: (typeof plan === "function" ? plan() : plan) || "", hasPlan: !!((typeof plan === "function" ? plan() : plan) || ""),
+      appt: !!s.fAppt, err: s.formErr || "", hasErr: !!s.formErr,
+      setAppt: (e) => this.setState({ fAppt: !!e.target.checked }),
       first: s.fFirst, email: s.fEmail, phone: s.fPhone, beds: s.fBeds,
-      realtor: s.fRealtor === "yes", sending: !!s.sending,
-      setFirst: (e) => this.setState({ fFirst: e.target.value }),
-      setEmail: (e) => this.setState({ fEmail: e.target.value }),
-      setPhone: (e) => this.setState({ fPhone: e.target.value }),
+      realtor: s.fRealtor === "yes", sending: !!s.sending, notSending: !s.sending,
+      setFirst: (e) => this.setState({ fFirst: e.target.value, formErr: "" }),
+      setEmail: (e) => this.setState({ fEmail: e.target.value, formErr: "" }),
+      setPhone: (e) => this.setState({ fPhone: e.target.value, formErr: "" }),
       setBeds: (e) => this.setState({ fBeds: e.target.value }),
       toggleRealtor: (e) => this.setState({ fRealtor: e.target.checked ? "yes" : "no" }),
       submit: this._submitLead(offer, loc, plan),
@@ -1531,13 +1539,21 @@ class Component extends DCLogic {
       if (e && e.preventDefault) e.preventDefault();
       const s = this.state;
       if (this._sending || s.submitted) return;
+      const em = (s.fEmail || "").trim(), ph = (s.fPhone || "").replace(/\D/g, "");
+      let err = "";
+      if (!(s.fFirst || "").trim()) err = "Please add your first name.";
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) err = "Please check your email address.";
+      else if (ph.length < 10) err = "Please add a 10-digit phone number so our sales team can reach you.";
+      if (err) { this.setState({ formErr: err }); return; }
       this._sending = true;
+      this.setState({ sending: true, formErr: "" });
       const p = typeof plan === "function" ? plan() : (plan || "");
       const utm = this._utm || {};
       const payload = {
         firstName: (s.fFirst || "").trim(), lastName: "", email: (s.fEmail || "").trim(), phone: (s.fPhone || "").trim(),
         beds: s.fBeds, realtor: s.fRealtor === "yes" ? "yes" : "no",
-        offer, plan: p, formLocation: loc, inquiry: offer,
+        offer: "pricing_floorplans", plan: p, preferred_plan: p, appointment: s.fAppt ? "yes" : "no",
+        formLocation: loc, form_location: loc, inquiry: s.fAppt ? "Pricing + private appointment" : "Pricing & floorplans",
         plans: (s.compare || []).join(", "),
         tags: "Eden_Website", source: "edenbyzenterra.ca", entryPoint: loc, pageSection: s.page,
         utm_source: utm.utm_source || "", utm_medium: utm.utm_medium || "", utm_campaign: utm.utm_campaign || "",
@@ -1558,12 +1574,14 @@ class Component extends DCLogic {
       } catch (err) { /* analytics unavailable */ }
       this._clearNudge();
       this._markNudge();
-      this.setState({ submitted: true, submittedOffer: offer, submittedName: payload.firstName || "there" }, () => { this._sending = false; });
+      window.setTimeout(() => {
+        this.setState({ submitted: true, sending: false, submittedOffer: offer, submittedAppt: !!s.fAppt, submittedName: payload.firstName || "there" }, () => { this._sending = false; });
+      }, 450);
     };
   }
   _showNudge(reason) {
     const s = this.state;
-    if (s.bookOpen || s.submitted || s.nudgeOpen || this._nudgeSeen()) return;
+    if (s.bookOpen || s.submitted || s.nudgeOpen || s.compareOpen || s.menuOpen || s.adminOpen || this._nudgeSeen()) return;
     const ae = document.activeElement;
     if (s.zoomOpen || (ae && /^(input|textarea|select)$/i.test(ae.tagName || ""))) return;
     this._markNudge();
@@ -1605,7 +1623,7 @@ class Component extends DCLogic {
       if (s.bookOpen || s.submitted || this._nudgeSeen()) return;
       if (s.page !== "floorplans" && s.page !== "amenities") return;
       const ae = document.activeElement;
-      const busy = s.zoomOpen || (ae && /^(input|textarea|select)$/i.test(ae.tagName || ""));
+      const busy = s.zoomOpen || s.compareOpen || s.menuOpen || s.adminOpen || (ae && /^(input|textarea|select)$/i.test(ae.tagName || ""));
       if (busy) { this._nudgeTimer = window.setTimeout(fire, 8000); return; }
       this._showNudge("dwell");
     };
@@ -1754,7 +1772,7 @@ class Component extends DCLogic {
     const goBlog = (e) => { if (e) e.preventDefault(); window.location.href = blogHref; };
     navItems.push({ label: "Blog", go: goBlog, style: navItems[0].style.replace("color:var(--eden-wheat)", "color:" + linkColor).replace("background:rgba(255,255,255,.09)", "background:transparent") });
     mobileNavItems.push({ label: "Blog", go: goBlog });
-    mobileNavItems.push({ label: "Book an appointment", go: this._openBook("book", "mobile-menu") });
+    mobileNavItems.push({ label: "Get pricing & floorplans", go: this._openBook("pricing", "mobile_menu") });
 
     // Amenities carousel - one photo at a time, auto-advancing with a soft crossfade.
     // Amenities carousel - one slide per amenity below, in the same order.
@@ -1781,11 +1799,11 @@ class Component extends DCLogic {
       const active = i === aIdx;
       return {
         slotId, title, alt, src: slotSrc(slotId),
-        wrapStyle: `flex:none;width:${SLIDE}%;position:relative;overflow:hidden;border-radius:3px;background:transparent;opacity:${active ? 1 : 0.5};transform:scale(${active ? 1 : 0.965});transition:opacity 620ms ease,transform 820ms cubic-bezier(.3,.86,.25,1);cursor:${active ? "default" : "pointer"};`,
+        wrapStyle: `flex:none;width:${SLIDE}%;position:relative;overflow:hidden;border-radius:3px;background:transparent;opacity:${active ? 1 : 0.5};transform:scale(${active ? 1 : 0.965});transition:opacity 620ms ease,transform 820ms cubic-bezier(.3,.86,.25,1);cursor:pointer;`,
         innerStyle: `position:absolute;inset:0;`,
         scrimStyle: `position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,38,26,0) 48%,rgba(28,38,26,.72) 100%);opacity:${active ? 1 : 0.45};transition:opacity 620ms ease;pointer-events:none;`,
         capStyle: `position:absolute;left:0;right:0;bottom:0;padding:clamp(20px,3vw,34px);display:flex;flex-direction:column;align-items:flex-start;gap:12px;pointer-events:none;opacity:${active ? 1 : 0};transition:opacity 480ms ease;`,
-        onPeek: (e) => { if (e && e.preventDefault) e.preventDefault(); if (!active) this.setState({ amenIdx: i, amenDir: i > aIdx ? 1 : -1 }); },
+        onPeek: (e) => { if (e && e.preventDefault) e.preventDefault(); if (!active) this.setState({ amenIdx: i, amenDir: i > aIdx ? 1 : -1 }); else this.setState({ amenIdx: (aIdx + 1) % N, amenDir: 1 }); },
         counter: `${String(i + 1).padStart(2, "0")} / ${String(N).padStart(2, "0")}`,
       };
     });
@@ -1938,7 +1956,7 @@ class Component extends DCLogic {
           this._saveSold(next);
         },
         open: (e) => { if (e) e.preventDefault(); this._lastPlan = p.name; window.scrollTo({ top: 0 }); this.setState({ activePlan: p }); },
-        getPricing: (e) => { this._lastPlan = p.name; this._openBook("pricing", "floorplan-card", p.name)(e); },
+        getPricing: (e) => { this._lastPlan = p.name; this._openBook("pricing", "floorplan_card", p.name)(e); },
       }));
     // Shortlist / compare - up to three plans, side by side, and the picks
     // travel into the registration form.
@@ -2230,33 +2248,32 @@ class Component extends DCLogic {
       goFloorplans: this.nav("floorplans"),
 
       // One booking flow, opened from every CTA on the site.
-      goBook: this._openBook("book", "cta"),
-      goHeaderCta: this._openBook("pricing", "header-register"),
+      goBook: this._openBook("pricing", "cta_band"),
+      goHeaderCta: this._openBook("pricing", "header"),
       goPricingHero: this._openBook("pricing", "hero"),
-      goPricingBar: this._openBook("pricing", "mobile-bar"),
-      goBookBar: this._openBook("book", "mobile-bar"),
+      goPricingBar: this._openBook("pricing", "sticky"),
       // Step 1 of the progressive ask: the email carries into the drawer.
-      quickAsk: this._openBook("pricing", "hero-band"),
-      bookThisPlan: this._openBook("pricing", "plan-detail", () => (this.state.activePlan ? this.state.activePlan.name : "")),
+      quickAsk: this._openBook("pricing", "hero_band"),
+      bookThisPlan: this._openBook("pricing", "plan_detail", () => (this.state.activePlan ? this.state.activePlan.name : "")),
       closeBook: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ bookOpen: false }); },
       stopProp: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
       bookOpen: !!this.state.bookOpen,
-      bookTitle: (this.state.bookPlan && this.state.bookOffer === "pricing") ? `Get pricing for ${this.state.bookPlan}` : (this._OFFERS[this.state.bookOffer] || this._OFFERS.book).title,
-      bookSub: (this.state.bookPlan && this.state.bookOffer === "pricing") ? "The price list and floorplan package for this plan, sent to your inbox." : (this._OFFERS[this.state.bookOffer] || this._OFFERS.book).sub,
-      bookEyebrow: (this._OFFERS[this.state.bookOffer] || this._OFFERS.book).eyebrow,
-      bookCta: (this._OFFERS[this.state.bookOffer] || this._OFFERS.book).cta,
+      bookTitle: this.state.bookPlan ? `Get pricing for plan ${this.state.bookPlan}` : this._OFFER.title,
+      bookSub: this._OFFER.sub,
+      bookEyebrow: this._OFFER.eyebrow,
+      bookCta: this._OFFER.cta,
       bookAlign: isMobile ? "flex-end" : "center",
       bookSheetStyle: `position:relative;width:100%;max-width:${isMobile ? "100%" : "620px"};margin:${isMobile ? "auto 0 0" : "auto"};background:var(--eden-ivory);border-radius:${isMobile ? "10px 10px 0 0" : "4px"};padding:${isMobile ? "18px 18px calc(22px + env(safe-area-inset-bottom))" : "28px 32px 32px"};box-shadow:0 -10px 50px rgba(20,28,18,.4);animation:edenFade .3s ease both;`,
-      bookForm: this._formProps(this.state.bookOffer || "book", this.state.bookLoc || "book-drawer", this.state.bookPlan),
-      fpForm: this._formProps("pricing", "after-floorplans"),
-      amenForm: this._formProps("pricing", "after-amenities"),
-      vipForm: this._formProps("vip", "footer-vip"),
-      regForm: this._formProps("pricing", "register-page"),
-      nudgeForm: this._formProps("pricing", "explorer-nudge", () => this._lastPlan || ""),
-      nudgeTitle: this._lastPlan ? `Want the price list for ${this._lastPlan}?` : "Want the Eden price list?",
+      bookForm: this._formProps("pricing", this.state.bookLoc || "drawer", this.state.bookPlan),
+      fpForm: this._formProps("pricing", "floorplans_inline", () => this._lastPlan || ""),
+      amenForm: this._formProps("pricing", "amenities_inline"),
+      vipForm: this._formProps("pricing", "page_footer"),
+      regForm: this._formProps("pricing", "register_page"),
+      nudgeForm: this._formProps("pricing", "nudge", () => this._lastPlan || ""),
+      nudgeTitle: this._lastPlan ? `Want pricing for plan ${this._lastPlan}?` : "Want the Eden price list?",
       hasStartPrice: !!String(this.props.startingPrice ?? "").trim(),
       startingPrice: String(this.props.startingPrice ?? "").trim(),
-      mobileBarOn: showMobileBar && !this.state.formInView && !this.state.bookOpen && !this.state.nudgeOpen,
+      mobileBarOn: showMobileBar && !this.state.formInView && !this.state.bookOpen && !this.state.nudgeOpen && !this.state.zoomOpen && !this.state.menuOpen,
       barSpacer: showMobileBar ? 74 : 0,
       nudgeOpen: !!this.state.nudgeOpen && !this.state.bookOpen,
       nudgeWrapStyle: isMobile
@@ -2343,7 +2360,7 @@ class Component extends DCLogic {
       cmpToRegister: (e) => {
         if (e) e.preventDefault();
         this.setState({ compareOpen: false });
-        this._openBook("pricing", "compare-panel")(e);
+        this._openBook("pricing", "compare_panel")(e);
       },
 
       adminOpen: !!this.state.adminOpen,

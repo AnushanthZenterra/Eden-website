@@ -10,7 +10,7 @@
   var PHONE = "778.762.1902", TEL = "+17787621902", EMAIL = "eden@zenterra.ca";
   var HOURS = "Open 12 \u2013 5 PM daily, closed Fridays";
   var SALES_ADDR = "190 Willoughby Town Centre Drive, Langley, BC";
-  var BOOK = "/#register";
+  var BOOK = "/?get=pricing&from=blog_";
 
   function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function strip(h) { return String(h).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim(); }
@@ -126,7 +126,7 @@
     return '<a class="skip" href="#main">Skip to content</a>\n<header class="hd">\n<div class="ann"><strong>Now selling</strong> \u00b7 Showhome ' + HOURS.charAt(0).toLowerCase() + HOURS.slice(1) + "</div>\n" +
       '<div class="bar"><a class="logo" href="/" aria-label="Eden by Zenterra home"><img src="' + LOGO + '" alt="Eden by Zenterra" width="120" height="34"></a>\n<nav class="nav" aria-label="Main">' +
       n.map(function (x) { return '<a href="' + x[0] + '"' + (x[1] === "Blog" ? ' aria-current="page"' : "") + ">" + x[1] + "</a>"; }).join("") +
-      '</nav><a class="btn" href="' + BOOK + '" data-cta="header">Book an appointment</a></div>\n</header>\n';
+      '</nav><a class="btn" href="' + BOOK + 'header" data-cta="header">Get pricing &amp; floorplans</a></div>\n</header>\n';
   }
 
   function footer() {
@@ -135,7 +135,7 @@
       '<div><h2>Explore</h2><a href="/#floorplans">Floorplans</a><a href="/#amenities">Amenities</a><a href="/#location">Location</a><a href="/#faq">FAQ</a><a href="/blog">Blog</a></div>' +
       '<div><h2>Eden by Zenterra</h2><p style="margin:0;font-weight:300">Presale 1, 2 &amp; 3 bedroom condominiums at 19936 77 Avenue in Willoughby, Langley, BC. Built by Zenterra Developments.</p><img class="zl" src="' + ZLOGO + '" alt="Zenterra Developments" width="140" height="30" loading="lazy"></div>' +
       '</div><p class="wrap" style="margin-top:32px;font-size:12px;opacity:.7">\u00a9 ' + new Date().getFullYear() + " Zenterra Developments. This is not an offering for sale. Any such offering may only be made with a disclosure statement. E.&amp;O.E.</p></footer>\n" +
-      '<div class="mbar"><a class="btn" href="' + BOOK + '" data-cta="mobile-bar">Book an appointment</a><a class="btn call" href="tel:' + TEL + '" data-cta="mobile-call" aria-label="Call the Eden sales team">Call</a></div>\n';
+      '<div class="mbar"><a class="btn" href="' + BOOK + 'mobile_bar" data-cta="mobile-bar">Get pricing &amp; floorplans</a><a class="btn call" href="tel:' + TEL + '" data-cta="mobile-call" aria-label="Call the Eden sales team">Call</a></div>\n';
   }
 
   function card(p, lazy) {
@@ -169,11 +169,11 @@
       '<div class="alay"><article>' +
       (p.keyFacts.length ? '<section class="facts" aria-labelledby="kf"><h2 id="kf">Quick answers</h2><ul>' + p.keyFacts.map(function (k) { return "<li>" + k + "</li>"; }).join("") + "</ul></section>" : "") +
       '<div class="prose">' + p.body + "</div>" +
-      '<section class="cta"><div><h2>Book a private appointment</h2><p>Tour the Eden showhome and get current pricing and floorplans. ' + HOURS + '.</p></div><a class="btn" href="' + BOOK + '" data-cta="article-end">Book an appointment</a></section>' +
+      '<section class="cta"><div><h2>Get pricing &amp; floorplans</h2><p>Current pricing and the Eden floorplan package by email, or book a private showhome appointment. ' + HOURS + '.</p></div><a class="btn" href="' + BOOK + 'article_end" data-cta="article-end">Get pricing &amp; floorplans</a></section>' +
       (p.faq.length ? '<section class="faq" aria-labelledby="fq"><h2 id="fq">Frequently asked questions</h2>' + p.faq.map(function (f, i) { return "<details" + (i === 0 ? " open" : "") + "><summary>" + esc(f.q) + '</summary><div class="ans">' + f.a + "</div></details>"; }).join("") + "</section>" : "") +
       "</article>" +
-      '<aside class="aside" aria-label="Book an appointment"><div class="stick"><h2>See Eden in person</h2><p>Presale 1, 2 &amp; 3 bedroom condos in Willoughby, Langley. Book a private appointment for pricing and floorplans.</p>' +
-      '<a class="btn" href="' + BOOK + '" data-cta="article-aside">Book an appointment</a><a class="btn btn-ghost" style="width:100%;margin-top:10px;color:var(--ivory);border-color:rgba(244,237,225,.4)" href="/#floorplans" data-cta="article-aside-plans">View floorplans</a>' +
+      '<aside class="aside" aria-label="Get pricing and floorplans"><div class="stick"><h2>See Eden in person</h2><p>Presale 1, 2 &amp; 3 bedroom condos in Willoughby, Langley. Get current pricing and floorplans, sent to your inbox.</p>' +
+      '<a class="btn" href="' + BOOK + 'article_aside" data-cta="article-aside">Get pricing &amp; floorplans</a><a class="btn btn-ghost" style="width:100%;margin-top:10px;color:var(--ivory);border-color:rgba(244,237,225,.4)" href="/#floorplans" data-cta="article-aside-plans">View floorplans</a>' +
       '<div class="nap">' + SALES_ADDR + "<br>" + HOURS + '<br><a href="tel:' + TEL + '">' + PHONE + "</a></div></div></aside></div></div>" +
       (related.length ? '<section class="rel" aria-labelledby="rl"><div class="wrap"><h2 id="rl">More from Eden</h2><div class="grid">' + related.map(function (r) { return card(r, true); }).join("") + '</div><p style="margin:32px 0 0"><a class="btn btn-ghost" href="/blog">All articles</a></p></div></section>' : "") +
       "</main>" + footer() + "</body>\n</html>\n";
@@ -195,7 +195,7 @@
       '<p class="lede">Eden by Zenterra is a community of presale 1, 2 &amp; 3 bedroom condominiums at 19936 77 Avenue in Willoughby, Langley, across from the Langley Events Centre. Follow construction progress, transit and neighbourhood news, and buying guides from the Zenterra team.</p></header>' +
       (f ? '<a class="feat" href="' + f.path + '"><div class="ph"><img src="' + esc(f.image) + '" alt="' + esc(f.imageAlt || f.title) + '" width="1200" height="800" fetchpriority="high"></div><div class="tx"><span class="meta"><span>' + esc(f.category) + '</span><time datetime="' + f.date + '">' + fmt(f.date) + "</time><span>" + f.minutes + " min read</span></span><h2>" + esc(f.title) + "</h2><p>" + esc(f.description) + '</p><span class="more">Read article</span></div></a>' : '<p class="lede">Articles are on the way.</p>') +
       (rest.length ? '<div class="grid">' + rest.map(function (p) { return card(p, true); }).join("") + "</div>" : "") +
-      '<section class="cta" style="margin:clamp(40px,6vw,72px) 0 clamp(48px,7vw,88px)"><div><h2>Book a private appointment</h2><p>See the Eden showhome at ' + SALES_ADDR + ". " + HOURS + '.</p></div><a class="btn" href="' + BOOK + '" data-cta="blog-index">Book an appointment</a></section>' +
+      '<section class="cta" style="margin:clamp(40px,6vw,72px) 0 clamp(48px,7vw,88px)"><div><h2>Get pricing &amp; floorplans</h2><p>Sent to your inbox, no obligation. Showhome at ' + SALES_ADDR + ". " + HOURS + '.</p></div><a class="btn" href="' + BOOK + 'blog_index" data-cta="blog-index">Get pricing &amp; floorplans</a></section>' +
       "</div></main>" + footer() + "</body>\n</html>\n";
   }
 

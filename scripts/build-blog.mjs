@@ -1,5 +1,4 @@
-// node scripts/build-blog.mjs
-// Site root is the parent of scripts/ (the Vercel project root).
+// node scripts/build-blog.mjs  (run from export/site/)
 // Reads content/blog/*.html, writes blog/**, sitemap.xml, llms.txt.
 import fs from "node:fs";
 import path from "node:path";

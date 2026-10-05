@@ -30,7 +30,7 @@ bar) push `book_click` to the dataLayer; every page pushes `page_view`.
 Add a post:
 1. Copy `content/blog/_template.html` to `content/blog/<slug>.html`.
 2. Fill the JSON front matter and paste the body HTML. Remove `"draft": true`.
-3. From the repository root run `node scripts/build-blog.mjs`.
+3. From `export/site/` run `node scripts/build-blog.mjs`.
 4. Deploy. `blog/`, `sitemap.xml` and `llms.txt` are regenerated.
 
 Moving posts from zenterra.ca: when a post goes live here, 301 the zenterra.ca
@@ -40,6 +40,31 @@ Eden"; its original URL is kept in `originalUrl` for the redirect. Its images
 still load from zenterra.ca/wp-content; move them to Cloudinary when convenient.
 
 URLs: /blog and /blog/<slug> (no trailing slash, matches vercel.json).
+
+## CRO pass, October 5 2026
+One offer everywhere: "Get Pricing & Floorplans". Every CTA opens the same
+EdenBookForm (first name, email, phone, bedrooms, realtor, optional "book a
+private showhome appointment"). Same success state with next steps. Every
+submit posts to the same Zapier hook with tags Eden_Website, source
+edenbyzenterra.ca, offer pricing_floorplans, appointment yes/no,
+preferred_plan, and entryPoint = form_location:
+
+  header, sticky, hero, hero_band, cta_band, mobile_menu, floorplan_card,
+  plan_detail, compare_panel, floorplans_inline, amenities_inline,
+  register_page, page_footer, nudge, blog_header, blog_mobile_bar,
+  blog_article_end, blog_article_aside, blog_blog_index
+
+Blog CTAs link to /?get=pricing&from=blog_<spot>; the site opens the drawer
+on load and strips the parameter.
+Form: custom validation with inline error (name, email, 10-digit phone),
+"Sending..." state, double-submit guard.
+Dead clicks fixed: plan card title/size/summary open plan detail; tapping the
+active amenity photo advances the carousel; plan detail now leads with
+"Get pricing for this plan", PDF download is secondary.
+Nudge: once per session, 35 s on Floorplans/Amenities, skipped while typing,
+zoomed, menu/compare/staff panel open, or another form is open.
+Blog: added "New ARENAS at Langley Events Centre..." and "New Condos in
+Willoughby, Langley: Buy Before the BRT...". 301 their zenterra.ca URLs here.
 
 ## Rebuilding
 Source of truth is /Eden.dc.html in the design project. Ask Claude to
