@@ -40,7 +40,7 @@
       ]
     },
     {
-      "source": "/assets/js/(react|eden)\\.[a-f0-9]+\\.js",
+      "source": "/assets/js/:name(react|eden).:hash([a-f0-9]+).js",
       "headers": [
         {
           "key": "Cache-Control",
