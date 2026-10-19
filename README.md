@@ -1,71 +1,66 @@
-# Eden by Zenterra: production deploy
+# Eden by Zenterra: production deploy (October 19, 2026)
 
-Deploy the contents of `export/site/` to the Vercel web root.
+Deploy the contents of this folder to the Vercel web root. URLs unchanged:
+`/`, `/blog`, `/blog/<slug>`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/assets/plans/*.pdf`.
 
-    index.html              the site (real <head>, canonical, crawl shell, JSON-LD)
-    eden-boot.js            Cloudinary URL builder + time-of-day hero + LCP preload
-    support.js              app runtime
-    image-slot.js           PRODUCTION image component (plain <img> + baked crops)
-    EdenBookForm.dc.html    the one booking/register form, imported by index.html
-    assets/plans/*.pdf      28 floorplan downloads
-    blog/                   generated, static, crawlable blog (do not hand-edit)
-    content/blog/*.html     blog SOURCE posts (edit these)
-    scripts/                blog builder
-    sitemap.xml, robots.txt, llms.txt, vercel.json
+    index.html                   real <head>, tracking tags, JSON-LD, static header + hero, crawl shell
+    assets/js/react.<hash>.js    React 18 + ReactDOM (self-hosted, cached separately)
+    assets/js/eden.<hash>.js     the site, minified, with eden.<hash>.js.map
+    assets/js/eden-lead.js       short lead form used at the end of every blog post
+    assets/loc-neighbourhood-map-clean.webp   Location page map
+    favicon.ico, favicon-32x32.png, apple-touch-icon.png, icon-192/512.png, site.webmanifest
+    vercel.json                  security headers + CSP, long-cache headers
 
-## What was wrong with the last live export
-`image-slot.js` in the previous package was an early production build that
-ignored the framing set in the design (scale + pan for every page header,
-the past-community tiles, BRT and home slides). Every one of those images fell
-back to a centred crop. The file in this package carries the exact framing for
-each slot id, so headers and tiles now match the design.
+Remove from the Vercel project if still present: `assets/js/eden.b5ea7b53.js`,
+`support.js`, `eden-boot.js`, `image-slot.js`, `EdenBookForm.dc.html`.
 
-## Blog
-Pages are plain HTML at build time: title, description, canonical, Open Graph,
-one H1, breadcrumbs, BlogPosting + BreadcrumbList + FAQPage JSON-LD, visible
-"Quick answers" and FAQ text, RSS, sitemap entries and llms.txt. No JavaScript
-is needed to read anything. Book CTAs (header, sidebar, end of article, mobile
-bar) push `book_click` to the dataLayer; every page pushes `page_view`.
+## Before going live
+1. **Tracking.** `index.html` and the blog use the standard GTM snippet (head +
+   noscript) for GTM-M4MNHS77, loaded immediately, not after paint and not behind
+   a consent banner. Google Ads AW-16577438747, GA4 G-QF7ZLEP0B3 and Microsoft
+   Clarity (yisp6n61s6) fire from inside that container. Do not add a second
+   gtag.js config for AW-16577438747: the live container already sends it, and a
+   duplicate config double-counts.
+2. **Blog tags.** `scripts/blog-builder.js` emits the same immediate GTM snippet.
+   Rebuild with `node scripts/build-blog.mjs` after editing a post.
+3. **Postal code.** JSON-LD now uses `V2Y 1S3` for 19936 77 Avenue (taken from a
+   public listing). Confirm with Canada Post before launch.
+4. **Zapier.** `is_realtor` and `working_with_realtor` are now sent as "Yes"/"No"
+   (capitalised). `realtor` still carries yes/no. Re-test the Zap mapping.
+5. **CSP.** After deploy, open the console on `/` and `/blog/...`, check for
+   CSP violations, and confirm GTM, GA4, Ads and Clarity fire in Tag Assistant /
+   Clarity live view.
 
-Add a post:
-1. Copy `content/blog/_template.html` to `content/blog/<slug>.html`.
-2. Fill the JSON front matter and paste the body HTML. Remove `"draft": true`.
-3. From `export/site/` run `node scripts/build-blog.mjs`.
-4. Deploy. `blog/`, `sitemap.xml` and `llms.txt` are regenerated.
+## What changed
+Forms
+- Thank-you state reads "Thanks, pricing is on its way."
+- Drawer: page behind no longer scrolls; submit button is sticky at the bottom of the drawer.
+- Every blog post ends with an inline short form (same fields, same hook,
+  form_location `blog_post_end`). The blog builder adds it to future posts.
 
-Moving posts from zenterra.ca: when a post goes live here, 301 the zenterra.ca
-URL to the new one (or set its canonical to it). Two copies of the same text on
-two domains split ranking. The seeded post is "Construction Has Started at
-Eden"; its original URL is kept in `originalUrl` for the redirect. Its images
-still load from zenterra.ca/wp-content; move them to Cloudinary when convenient.
+Nudge
+- Shows once ever (localStorage) after 45 s or 50% scroll, on every page except
+  Register. Never over an open drawer, never after a submit.
 
-URLs: /blog and /blog/<slug> (no trailing slash, matches vercel.json).
+SEO / AEO / GEO
+- FAQ: 10 questions. The visible FAQ, the crawl shell and FAQPage JSON-LD are
+  generated from one list, so they match word for word.
+- ApartmentComplex: full postal code, phone, image, `builder` and `developer`
+  linked to a new Organization/RealEstateDeveloper block for Zenterra
+  (logo, head office, phone, social profiles), and an AggregateOffer from $374,990.
+- og:image / twitter:image added; `lang="en"`; favicon set and web manifest.
+- sitemap.xml lastmod updated; the blog builder keeps adding new posts.
 
-## CRO pass, October 5 2026
-One offer everywhere: "Get Pricing & Floorplans". Every CTA opens the same
-EdenBookForm (first name, email, phone, bedrooms, realtor, optional "book a
-private showhome appointment"). Same success state with next steps. Every
-submit posts to the same Zapier hook with tags Eden_Website, source
-edenbyzenterra.ca, offer pricing_floorplans, appointment yes/no,
-preferred_plan, and entryPoint = form_location:
+Accessibility
+- Orange CTA colour darkened to #a5532a (white text 5.4:1); eyebrow sage text
+  darkened to #66674b; grey captions to #6f6857. All now pass WCAG AA.
 
-  header, sticky, hero, hero_band, cta_band, mobile_menu, floorplan_card,
-  plan_detail, compare_panel, floorplans_inline, amenities_inline,
-  register_page, page_footer, nudge, blog_header, blog_mobile_bar,
-  blog_article_end, blog_article_aside, blog_blog_index
-
-Blog CTAs link to /?get=pricing&from=blog_<spot>; the site opens the drawer
-on load and strips the parameter.
-Form: custom validation with inline error (name, email, 10-digit phone),
-"Sending..." state, double-submit guard.
-Dead clicks fixed: plan card title/size/summary open plan detail; tapping the
-active amenity photo advances the carousel; plan detail now leads with
-"Get pricing for this plan", PDF download is secondary.
-Nudge: once per session, 35 s on Floorplans/Amenities, skipped while typing,
-zoomed, menu/compare/staff panel open, or another form is open.
-Blog: added "New ARENAS at Langley Events Centre..." and "New Condos in
-Willoughby, Langley: Buy Before the BRT...". 301 their zenterra.ca URLs here.
+Performance
+- React is a separate long-cached file; site code is minified with a source map.
+- The tracking tags now load in `<head>` as requested, so they count against
+  Lighthouse Performance. Run Lighthouse after deploy; 90+ mobile is not
+  guaranteed with GTM + gtag.js loading synchronously in the head.
 
 ## Rebuilding
-Source of truth is /Eden.dc.html in the design project. Ask Claude to
-"rebuild export/site" after any edit.
+Source of truth: `Eden.dc.html`, `EdenBookForm.dc.html`, `eden-location-map.js`
+in the design project. `build/build-prod.js` compiles them into this folder.
