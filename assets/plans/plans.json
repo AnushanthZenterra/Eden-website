@@ -1,0 +1,125 @@
+{
+  "source": "Anushanth's PDFs, Oct 20, 2026; compared with zenterra.ca/solana plan list",
+  "plans": [
+    {
+      "plan": "D1",
+      "building": "B",
+      "type": "2 Bedroom + 2 Bath",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "den": false,
+      "interior_sqft": 848,
+      "exterior_sqft": 80,
+      "total_sqft": 928,
+      "units": "108, 208, 308, 408, 508",
+      "mirrored_units": "109, 209, 309, 409, 509",
+      "pdf": "solana-plan-d1-bldg-b.pdf",
+      "preview_png": "solana-plan-d1-bldg-b.png",
+      "preview_webp": "solana-plan-d1-bldg-b.webp",
+      "source_file": "01M5D7XFGJ7TJ7ASX51BGRZQD4.pdf",
+      "source_page": 1,
+      "preview_px": [
+        935,
+        1210
+      ],
+      "zenterra_ca_sqft": 928,
+      "zenterra_ca_match": "matches total"
+    },
+    {
+      "plan": "B2",
+      "building": "B",
+      "type": "1 Bedroom + 1 Bath",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "den": false,
+      "interior_sqft": 635,
+      "exterior_sqft": 107,
+      "total_sqft": 742,
+      "units": "110",
+      "mirrored_units": "111",
+      "pdf": "solana-plan-b2-bldg-b.pdf",
+      "preview_png": "solana-plan-b2-bldg-b.png",
+      "preview_webp": "solana-plan-b2-bldg-b.webp",
+      "source_file": "01M5D7XFH0TMTVRP9ZCH1B2P6M.pdf",
+      "source_page": 1,
+      "preview_px": [
+        935,
+        1210
+      ],
+      "zenterra_ca_sqft": 742,
+      "zenterra_ca_match": "matches total"
+    },
+    {
+      "plan": "B2",
+      "building": "A",
+      "type": "1 Bedroom + 1 Bath",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "den": false,
+      "interior_sqft": 635,
+      "exterior_sqft": null,
+      "total_sqft": null,
+      "units": "110",
+      "mirrored_units": null,
+      "pdf": "solana-plan-b2-bldg-a.pdf",
+      "preview_png": "solana-plan-b2-bldg-a.png",
+      "preview_webp": "solana-plan-b2-bldg-a.webp",
+      "source_file": "01M5D7XFMDJBJMQQG0KCQRG69S.pdf",
+      "source_page": 1,
+      "preview_px": [
+        935,
+        1210
+      ],
+      "zenterra_ca_sqft": 635,
+      "zenterra_ca_match": "matches interior only; PDF exterior/total blank (---)"
+    },
+    {
+      "plan": "B2a",
+      "building": "A",
+      "type": "1 Bedroom + 1 Bath",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "den": false,
+      "interior_sqft": 635,
+      "exterior_sqft": 115,
+      "total_sqft": 752,
+      "units": "109",
+      "mirrored_units": null,
+      "pdf": "solana-plan-b2a-bldg-a.pdf",
+      "preview_png": "solana-plan-b2a-bldg-a.png",
+      "preview_webp": "solana-plan-b2a-bldg-a.webp",
+      "source_file": "01M5D7XFMDJBJMQQG0KCQRG69S.pdf",
+      "source_page": 2,
+      "preview_px": [
+        935,
+        1210
+      ],
+      "zenterra_ca_sqft": 752,
+      "zenterra_ca_match": "matches total"
+    },
+    {
+      "plan": "B9",
+      "building": "A",
+      "type": "1 Bedroom + 1 Bath",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "den": false,
+      "interior_sqft": 648,
+      "exterior_sqft": 36,
+      "total_sqft": 684,
+      "units": "104",
+      "mirrored_units": null,
+      "pdf": "solana-plan-b9-bldg-a.pdf",
+      "preview_png": "solana-plan-b9-bldg-a.png",
+      "preview_webp": "solana-plan-b9-bldg-a.webp",
+      "source_file": "01M5D7XFMDJBJMQQG0KCQRG69S.pdf",
+      "source_page": 3,
+      "preview_px": [
+        935,
+        1210
+      ],
+      "zenterra_ca_sqft": 684,
+      "zenterra_ca_match": "matches total"
+    }
+  ]
+}

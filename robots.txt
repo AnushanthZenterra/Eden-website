@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /
+Disallow: /
 
-Sitemap: https://www.edenbyzenterra.ca/sitemap.xml
+# Design preview only. No live domain. Do not index.
