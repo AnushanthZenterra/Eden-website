@@ -123,7 +123,7 @@
 
   function header() {
     var n = [["/", "Home"], ["/#location", "Location"], ["/#floorplans", "Floorplans"], ["/#amenities", "Amenities"], ["/#homes", "The Homes"], ["/#developer", "The Developer"], ["/#faq", "FAQ"], ["/blog", "Blog"]];
-    return '<a class="skip" href="#main">Skip to content</a>\n<header class="hd">\n<div class="ann"><strong>Now selling</strong> \u00b7 Showhome ' + HOURS.charAt(0).toLowerCase() + HOURS.slice(1) + "</div>\n" +
+    return '<a class="skip" href="#main">Skip to content</a>\n<header class="hd">\n<div class="ann"><strong>Grand Opening October 28</strong> \u00b7 Showhome ' + HOURS.charAt(0).toLowerCase() + HOURS.slice(1) + "</div>\n" +
       '<div class="bar"><a class="logo" href="/" aria-label="Eden by Zenterra home"><img src="' + LOGO + '" alt="Eden by Zenterra" width="120" height="34"></a>\n<nav class="nav" aria-label="Main">' +
       n.map(function (x) { return '<a href="' + x[0] + '"' + (x[1] === "Blog" ? ' aria-current="page"' : "") + ">" + x[1] + "</a>"; }).join("") +
       '</nav><a class="btn" href="' + BOOK + 'header" data-cta="header">Get Pricing</a></div>\n</header>\n';
