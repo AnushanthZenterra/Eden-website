@@ -22,6 +22,8 @@
     [].forEach.call(form.querySelectorAll("[data-seg] button"), function (b) {
       b.addEventListener("click", function () { pick(b.parentNode.getAttribute("data-seg"), b.value); });
     });
+    var consentEl = form.elements.sms_consent;
+    if (consentEl) consentEl.addEventListener("change", function () { if (consentEl.checked) msg(consentEl, ""); });
     Object.keys(RULES).forEach(function (k) {
       var el = form.elements[k];
       el.addEventListener("blur", function () { if (el.value.trim() || el.getAttribute("aria-invalid") === "true") msg(el, RULES[k](el.value.trim())); });
@@ -37,6 +39,9 @@
         var e = g.parentNode.querySelector(".el-err"); var bad = !val[r[0]];
         e.hidden = !bad; e.textContent = bad ? r[1] : ""; if (bad && !first) first = g.querySelector("button");
       });
+      var consent = form.elements.sms_consent;
+      var cErr = consent && consent.checked ? "" : "Please tick the consent box to continue.";
+      if (consent) { msg(consent, cErr); if (cErr && !first) first = consent; }
       if (first) { first.focus(); return; }
       sending = true;
       var btn = form.querySelector('button[type="submit"]'); btn.disabled = true; btn.textContent = "Sending…";
@@ -52,6 +57,13 @@
         gclid: q("gclid"), fbclid: q("fbclid"), landingPage: location.pathname + location.search, referrer: document.referrer || "",
         submittedAt: new Date().toISOString()
       };
+      p.sms_consent = "yes";
+      ["description", "notes", "message"].forEach(function (k) {
+        if (Object.prototype.hasOwnProperty.call(p, k)) {
+          var cur = p[k] == null ? "" : String(p[k]);
+          p[k] = cur ? (cur.replace(/\s*$/, "") + "\nSMS Consent: Yes") : "SMS Consent: Yes";
+        }
+      });
       try { fetch(HOOK, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "application/json" }, body: JSON.stringify(p) }).catch(function () {}); } catch (e) {}
       try { (window.dataLayer = window.dataLayer || []).push({ event: "generate_lead", form_source: loc, form_location: loc, offer: "pricing", is_realtor: val.realtor }); } catch (e) {}
       setTimeout(function () {
