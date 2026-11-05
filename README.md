@@ -47,7 +47,7 @@ SEO / AEO / GEO
   generated from one list, so they match word for word.
 - ApartmentComplex: full postal code, phone, image, `builder` and `developer`
   linked to a new Organization/RealEstateDeveloper block for Zenterra
-  (logo, head office, phone, social profiles), and an AggregateOffer from $374,990.
+  (logo, head office, phone, social profiles), and an AggregateOffer from $409,990.
 - og:image / twitter:image added; `lang="en"`; favicon set and web manifest.
 - sitemap.xml lastmod updated; the blog builder keeps adding new posts.
 
