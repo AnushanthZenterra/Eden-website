@@ -1,8 +1,8 @@
-# Solana by Zenterra — design preview
+# Solana by Zenterra — GV90-style homepage concept
 
-This branch (`solana-preview`) is a static design preview only.
+This branch (`solana-gv90-concept`) is a mobile-first homepage concept. It is not the `solana-preview` site and it is not production.
 
-**Do not merge it into `main`.** `main` deploys the live Eden site.
+**Do not merge it into `main` or into `solana-preview`.** `main` deploys the live Eden site.
 
 - No tracking tags.
 - Lead form does not post anywhere while `SOLANA_WEBHOOK_URL` in `assets/js/solana.js` is empty.

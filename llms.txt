@@ -1,6 +1,8 @@
 # Solana by Zenterra
 
-Design preview. Not the live Eden website. Do not index.
+GV90-style homepage concept on branch solana-gv90-concept. Not the live Eden website and not the solana-preview site. Do not index.
+
+The First Edition / Founders' Collection section is a design concept. Its details are labelled placeholders. No price, count, or release date is stated.
 
 Solana is a condominium community by Zenterra Developments at 7687-200 Street, Langley, BC V2Y 1S3, in Willoughby.
 
